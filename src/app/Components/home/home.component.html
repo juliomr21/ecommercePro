@@ -1,0 +1,45 @@
+<div>
+  <div>
+    <app-banner-carousel class="banner"></app-banner-carousel>
+  </div>
+  <h1 class="title text-center">Popular products</h1>
+  <div>
+    <div class="flex">
+      <button class="button-nav d-none d-md-block" (click)="scroll(-100)">
+        <i class="fa fa-chevron-left fa-3x color-nav" aria-hidden="true"></i>
+      </button>
+      <div class=" foto-list-container container">
+        @for(product of list_products_show;track product.id){
+        <div class=" foto-list ">
+          <div class=" card-product">
+            <div>
+              <img class="img-card" src={{product.thumbnail}} alt="" (click)="detail_product(product.id)">
+            </div>
+            <div class="text-center title-card container">
+              <p>{{product.title}}</p>
+            </div>
+            <p class="text-center text-secondary">{{product.category}}</p>
+            <div>
+              <p class="text-center">
+                ${{product.price}}</p>
+            </div>
+            <div class="container flex">
+              <div>
+                <button class="btn add-cart" (click)="add(product.title,product.price,product.thumbnail,product.id)">
+                  Add to cart
+                </button>
+              </div>
+              <div>
+                <button class="btn btn-outline-primary" (click)="detail_product(product.id)">See more...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      <button class="button-nav d-none d-md-block" (click)="scroll(100)">
+        <i class="fa fa-chevron-right fa-3x color-nav" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+</div>

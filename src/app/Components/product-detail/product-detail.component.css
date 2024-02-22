@@ -1,0 +1,53 @@
+.foto-list-container {
+    width: 100%; /* O el ancho que desees */
+    overflow-x: auto;
+    white-space: nowrap; /* Para que las imágenes estén en la misma línea */
+  }
+  
+  .foto-list {
+    display: inline-block;
+  }
+  .flex{
+    display: flex;
+  }
+  .button-nav {
+    margin: 5px;
+    background: transparent;
+    border: transparent;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .image-principal{
+    height: 450px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .marg-principal{
+    padding: 3rem;padding-left: 1rem;padding-right: 1rem;
+  }
+  .list-img-v{
+    overflow-y: auto;height: 450px;
+  }
+  .list-img-h{
+    overflow-x: auto;white-space: nowrap; 
+  }
+  .img-aux{
+    margin-top: 25px; cursor: pointer;
+    width: 100%;height: 100%;
+  }
+  .dark-blue {
+    background: #2f3b69;
+    color: aliceblue;
+}
+  @media(max-width:451px){
+    .image-principal{
+      height: 100%;
+    }
+    .img-aux{
+      margin-top: 25px; cursor: pointer; height: 50px;width: 50px; margin-right: 10px;
+      border-radius: 6px;
+    }
+  }
+
+ 

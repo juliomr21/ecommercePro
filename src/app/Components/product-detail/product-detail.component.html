@@ -1,0 +1,85 @@
+
+<div class="container marg-principal">
+       <div class="row">
+           <div class="col-1 d-none d-md-block">
+            <div class="list-img-v">
+              @for(img of list_img_aux; track img){
+                <div><img class="img-aux" src={{img}} alt="" (click)="actualizar_img(img)"></div>
+              }
+            </div>
+           </div>
+            <div class="col-lg-7 col-sm-12" >
+                <img class="image-principal" src={{img_principal}} alt="" >
+                
+            </div>
+            <div class="d-sm-none mb-4" >
+                <div class="flex">
+                    @for(img of list_img_aux; track img){
+                        <div ><img  class="img-aux" src={{img}} alt=""  (click)="actualizar_img(img)"></div>
+                    }
+                </div>
+               
+            
+            </div>
+            <div class="col-lg-4" style="margin-left: auto;">
+                <h2>{{producto.title}}</h2>
+                <h4 style="color: darkgrey;">{{producto.category}}</h4>
+                              
+                <p style="margin-right: auto;color: rgb(15, 77, 158);font-size:30px;"> ${{producto.price}}</p>
+                <div style="display: flex;">
+                    <button class="btn dark-blue"(click)="add()"><span style="margin-right: 10px;" ><i class="fa fa-cart-plus" aria-hidden="true"></i>
+                    </span>Add to Cart</button>
+                    
+                    <div style="margin-left: 20px; display: flex; ;border-radius: 5px;">
+                        
+                        
+                        <input type="number" class="text-center" style="width: 100px;border-radius: 5px;" placeholder="1" min="1" [(ngModel)]="cant">
+                      
+                    </div>
+                </div>
+                
+                
+                <h4 style="margin-top: 15px;">Product description</h4>
+                <p style="color: darkgray;">{{producto.description}}</p>
+            </div>
+    
+      
+    </div>
+    <hr>
+    <h2 class="text-center mt-5 mb-5" style="color: #2f3b69;;">Similar Products</h2>
+   
+    <div style="display: flex;" >
+        <button class="button-nav" (click)="scroll(-100)" ><i class="fa fa-chevron-left fa-3x" aria-hidden="true" style="margin-left: 20px;margin-right: 20px; color: #f68712;"></i>
+        </button>
+        <div class=" foto-list-container">
+            @for( product of  lista_productos_similares; track product){
+                <div class=" foto-list " >
+    
+                    <div class="container " style=" box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width: 250px;height: 350px; margin-right: 25px; cursor: pointer;" (click)="detail_product(product.id)">
+                        <div style="height: 20px;"></div>
+                        <div style="margin-left: auto;margin-right: auto;margin-bottom: 5px; ">
+                            <img src={{product.thumbnail}} alt="" style="height: 150px;width: 100%;">
+                        </div>
+                       
+                        <div class="text-center" style="font-size: large;overflow-x: auto;" >{{product.title}}</div>
+                        <p class="text-center" style="color: #7d879c;;" >{{product.category}}</p>
+                        
+                       <div >
+                        
+                            <p class="text-center" style="margin-right: auto;color: rgb(15, 77, 158);font-size:25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> ${{product.price}}</p>
+                            <!-- <app-rating [rating]="product.rating"></app-rating> -->
+                            
+                        </div>
+                                        
+                    </div>
+                </div>
+            }
+            
+    
+        </div>
+        <button class="button-nav" (click)="scroll(100)" >
+            <i class="fa fa-chevron-right fa-3x" style="margin-left: 20px;margin-right: 20px; color: #f68712;" aria-hidden="true"></i>
+        </button>
+    </div>
+   
+</div>

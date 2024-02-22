@@ -1,0 +1,95 @@
+.home-margin {
+    padding: 1rem;
+}
+
+.h-center {
+    display: flex;
+    align-items: center;
+    min-height: 100%;
+}
+
+.w-center {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    width: 100%;
+    min-height: 100%;
+}
+
+.banner {
+    height: 100px;
+    /* background: rebeccapurple; */
+}
+
+.title {
+    color: #2f3b69;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.flex {
+    display: flex;
+}
+
+@media(max-width:450px) {
+    .banner {
+        height: 200px;
+    }
+}
+
+.foto-list-container {
+    width: 100%;
+    /* O el ancho que desees */
+    overflow-x: auto;
+    white-space: nowrap;
+    /* Para que las imágenes estén en la misma línea */
+}
+
+.foto-list {
+    display: inline-block;
+    margin-top: 25px;
+}
+
+.button-nav {
+    margin: 5px;
+    background: transparent;
+    border: transparent;
+    height: 50px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+.color-nav {
+    margin-left: 20px;
+    margin-right: 20px;
+    color: #f68712;
+}
+
+.card-product {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 250px;
+    height: 350px;
+    margin-right: 25px;
+}
+
+.img-card {
+    height: 150px;
+    width: 100%;
+}
+
+.title-card {
+    font-size: large;
+    overflow-x: clip;
+    margin-top: 10px;
+}
+
+.letter-price {
+    margin-right: auto;
+    color: rgb(15, 77, 158);
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.add-cart{
+   background: #2f3b69;color: aliceblue;margin-right: 10px;
+}

@@ -1,0 +1,122 @@
+<div class="container">
+    <div class="flex">
+
+        <!-- payment -->
+        <div class="data-user">
+            <div class="w-center">
+                <div class="container">
+                    <h1>Contact data</h1>
+                    <div style="margin-top: 25px;">
+                        <input type="text" id="name" class="form-control">
+                        <div>
+                            <label for="name">Name</label>
+                        </div>
+
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <input type="text" id="name" class="form-control">
+                        <div>
+                            <label for="name">E-mail</label>
+                        </div>
+
+                    </div>
+                    <div style="display: flex;gap: 10px;margin-top: 15px;">
+                        <div>
+                            <input type="text" id="name" class="form-control">
+                            <div>
+                                <label for="name">Celular</label>
+                            </div>
+
+                        </div>
+                        <div>
+                            <input type="text" id="name" class="form-control">
+                            <div>
+                                <label for="name">CPF (Brasil)*</label>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <h2 style="margin-top: 25px;">Data for delivery</h2>
+                    <div class="flex" style="gap: 10px;">
+                        <div style="display: flex;gap: 10px;">
+                            <div>
+                                <input type="text" id="name" class="form-control">
+                                <label for="name">CEP (Brasil)*</label>
+                            </div>
+                            <div style="width: 150px;">
+                                <button class="btn" style="color: aliceblue;background: #2f3b69;">Buscar <i
+                                        class="fa fa-search" aria-hidden="true"></i> </button>
+                            </div>
+                        </div>
+
+                        <div class="top15" style="display: flex;gap: 10px;">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <div>
+                                <div>Conjunto Primavera</div>
+                                <div>CEP 65066620-Turu. São Luís-MA</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div style="display: flex;gap: 10px;margin-top: 15px;margin-bottom: 15px;">
+                        <div>
+                            <input type="text" name="numero" class="form-control">
+                            <label for="numero">Number</label>
+                        </div>
+                        <div>
+                            <input type="text" name="complemento" class="form-control">
+                            <label for="complemento">Complement</label>
+                        </div>
+
+                    </div>
+
+
+                    <h2>Payment method</h2>
+                    <input class="form-control" type="text" name="cardNum">
+                    <label for="cardNum"> Card Number</label>
+
+                    <div style="display: flex;gap: 10px;margin-top: 15px;">
+                        <div>
+                            <input class="form-control" type="text" name="mes" placeholder="MM">
+                            <label for="mes"> Month</label>
+                        </div>
+                        <div>
+                            <input class="form-control" type="text" name="mes" placeholder="YYYY">
+                            <label for="mes"> Year</label>
+                        </div>
+                        <div>
+                            <input class="form-control" type="text" name="mes">
+                            <label for="mes"> cvv or cvc</label>
+                        </div>
+                    </div>
+                    <div style="margin-top: 15px;">
+                        <div>
+                            <input class="form-control" type="text" name="mes" placeholder="MM">
+                            <label for="mes"> Your name on the card:</label>
+                        </div>
+
+                    </div>
+
+                    <!-- <h2>Additional comments</h2> -->
+
+                </div>
+            </div>
+        </div>
+        <!-- fin payment -->
+        <div class="preview-cart" >
+            <div class="d-none d-md-block mb-3 view-cart">
+                <h1>Shopping cart</h1>
+                <app-cart class="mt-2"></app-cart>
+
+            </div>
+            <div>
+                <button class="btn dark-blue" >Continue payment</button>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,38 @@
+.center-content{
+    height: 70%;
+    width: auto;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.card-cart{
+    background: rebeccapurple;
+}
+.bar-title-card{
+    background: #2f3b69;
+    height: 50px;
+    width: 100%;
+}
+.form-control{
+    width: 100px;
+    /* margin-left: 74px; */
+}
+.flex{
+    display: flex;
+    gap: 10px;
+}
+.price{
+    margin-left: auto;width: 50%; text-align: end;
+  
+}
+.pointer{
+    cursor: pointer;
+}
+.cant-price{
+    margin-left: auto;margin-top: 15px;cursor: initial;
+}
+.ml-auto{
+    width: max-content;
+    margin-left: auto;
+}
