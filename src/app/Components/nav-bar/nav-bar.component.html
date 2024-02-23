@@ -1,13 +1,13 @@
 @if(showCart){
 <div class="vh-100" style="background: rgb(3, 0, 8);width: 100%;z-index: 100;position: fixed;opacity: 90%;"
-    (click)="showCart = false">
+    (click)="showCart = false;">
 
 </div>
 <div class="cart-sh" style=" background: aliceblue; z-index: 105; opacity: 1;height: 95%;">
     <div class="card-cart">
         <h2 class="bar-title-card">
-           
-Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
+
+            Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
             <div style="margin-left: auto;">
                 <button style="color: aliceblue;border: transparent;background: transparent;"
                     (click)="showCart = !showCart">X</button>
@@ -17,11 +17,12 @@ Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
             <app-cart></app-cart>
             <div class="mt-3">
                 <div>
-                    <button class=" btn btn-payment" (click)="go_to_payment()">Proceed to checkout <i class="fa-solid fa-money-check-dollar"></i>
+                    <button class=" btn btn-payment" (click)="go_to_payment()">Proceed to checkout <i
+                            class="fa-solid fa-money-check-dollar"></i>
                     </button>
                 </div>
             </div>
-            <p class="text-center mt-3" (click)="go_to_product()" style="cursor: pointer;">See more products 
+            <p class="text-center mt-3" (click)="go_to_product()" style="cursor: pointer;">See more products
                 <i class="fa-regular fa-eye"></i>
             </p>
         </div>
@@ -35,7 +36,7 @@ Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
     <div class="d-none d-md-block container  ">
         <div class="row h-center">
             <div class="col-3">
-                <div class="img-size" [routerLink]="['']" >
+                <div class="img-size" [routerLink]="['']">
                     <img class="full-img" src="assets/oficial.png" alt="">
                 </div>
             </div>
@@ -65,15 +66,16 @@ Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
                 </div>
             </div>
         </div>
+
     </div>
     <div class="d-sm-none">
 
         <div>
             <div class="row h-center">
-                <div class="col">
+                <div class="col" style="cursor: pointer;" (click)="menuMovil = true">
                     <i class="fa fa-bars fa-2xl" aria-hidden="true"></i>
                 </div>
-                <div class="col-6 img-size"[routerLink]="['']">
+                <div class="col-6 img-size" [routerLink]="['']">
                     <img class="full-img" src="assets/oficial.png" alt="">
                 </div>
                 <div class="col">
@@ -89,5 +91,37 @@ Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
         <div>
             <input class="form-control " type="text">
         </div>
+
+    </div>
+
+</div>
+<div class=" dark-blue d-none d-md-block" style="border-top: solid 1px aliceblue;">
+    <div class="container" style="display: flex;justify-content: space-between;padding: 5px;">
+        <a class="nav-link" [routerLink]="['/products/all']">Products</a>
+        <a class="nav-link" [routerLink]="['/products/smartphones']">Smartphone & Laptop</a>
+        <a class="nav-link" [routerLink]="['/products/fragrances']">Oil & Fragrances</a>
+        <a class="nav-link" [routerLink]="['/products/furniture']">Home-Decoration</a>
+        <a class="nav-link" [routerLink]="['/products/tops']">Fashion</a>
+        <a class="nav-link" [routerLink]="['/products/motorcycle']">Automotive</a>
+    </div>
+
+</div>
+@if(menuMovil){
+<div class="container menu-movil" >
+    <h2 style="text-align: right;padding: 1rem;" (click)="menu_close()">x</h2>
+    <div class="mt-2">
+        <a class="nav-link"  (click)="go_to_category('all')">Products</a>
+        <a class="nav-link"  (click)="go_to_category('smartphones')">Smartphone & Laptop</a>
+        <a class="nav-link"  (click)="go_to_category('fragrances')">Oil & Fragrances</a>
+        <a class="nav-link"  (click)="go_to_category('furniture')">Home-Decoration</a>
+        <a class="nav-link"  (click)="go_to_category('tops')">Fashion</a>
+        <a class="nav-link"  (click)="go_to_category('motorcycle')">Automotive</a>
     </div>
 </div>
+
+<div class="vh-100" style="background: rgb(3, 0, 8);width: 100%;z-index: 100;position: fixed;opacity: 90%;top: 0;"
+    (click)="menuMovil = false;">
+
+
+</div>
+}

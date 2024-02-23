@@ -42,11 +42,11 @@
                     <div class="flex" style="gap: 10px;">
                         <div style="display: flex;gap: 10px;">
                             <div>
-                                <input type="text" id="name" class="form-control">
+                                <input type="text" id="name" class="form-control" [(ngModel)]="cepTemp">
                                 <label for="name">CEP (Brasil)*</label>
                             </div>
                             <div style="width: 150px;">
-                                <button class="btn" style="color: aliceblue;background: #2f3b69;">Buscar <i
+                                <button class="btn" style="color: aliceblue;background: #2f3b69;" (click)="search_cep()">Buscar <i
                                         class="fa fa-search" aria-hidden="true"></i> </button>
                             </div>
                         </div>
@@ -54,8 +54,8 @@
                         <div class="top15" style="display: flex;gap: 10px;">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                             <div>
-                                <div>Conjunto Primavera</div>
-                                <div>CEP 65066620-Turu. São Luís-MA</div>
+                                <div>{{cep.logradouro}}</div>
+                                <div>CEP {{cep.cep}}-{{cep.bairro}}. {{cep.localidade}}-{{cep.uf}}</div>
                             </div>
 
                         </div>

@@ -15,6 +15,9 @@
     width: 160px;
     cursor: pointer;
 }
+.nav-link:hover{
+    color: #dad23e;
+}
 
 .h-center {
     display: flex;
@@ -72,6 +75,13 @@
     /* right: auto; */
      left: 0;
      top: 0;
+  }
+  .nav-link{
+    padding: 1rem;
+    cursor: pointer;
+  }
+  .menu-movil{
+    background: #2f3b69; z-index: 105; opacity: 1;height: 95%;width: 50%;position: absolute;color:aliceblue ;top:0
   }
 }
 

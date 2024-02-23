@@ -14,12 +14,12 @@ import { FormsModule } from '@angular/forms';
 export class ProductDetailComponent {
   // producto = { id: 0, images: [], thumbnail: '', price: 0, title: '', description: '', category: '' };
  
- producto = {"id":1,"title":"iPhone 9","description":"An apple mobile which is nothing like apple","price":549,"discountPercentage":12.96,"rating":4.69,"stock":94,"brand":"Apple","category":"smartphones","thumbnail":"https://cdn.dummyjson.com/product-images/1/thumbnail.jpg","images":["https://cdn.dummyjson.com/product-images/1/1.jpg","https://cdn.dummyjson.com/product-images/1/2.jpg","https://cdn.dummyjson.com/product-images/1/3.jpg","https://cdn.dummyjson.com/product-images/1/4.jpg","https://cdn.dummyjson.com/product-images/1/thumbnail.jpg"]}
+ producto = {"id":0,"title":"","description":"","price":0,"discountPercentage":0,"rating":0,"stock":0,"brand":"","category":"","thumbnail":"","images":[]}
   lista_productos_similares:any = []
-  img_principal =  "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg";
+  img_principal =  "";
   list_img_aux:string[] = [];
   cant = 1;
-  img = "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg";
+  img = "";
   badge = 0;
   constructor(
     private http_serv: HttpConectionService, 
