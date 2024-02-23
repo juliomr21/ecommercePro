@@ -3,6 +3,7 @@ import { HttpConectionService } from '../../service/http-conection.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { DataService, carTypeObj } from '../../service/data.service';
 import { FormsModule } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-detail',
@@ -25,7 +26,8 @@ export class ProductDetailComponent {
     private http_serv: HttpConectionService, 
     private act_router: ActivatedRoute,
     private router: Router,
-    private data:DataService) { }
+    private data:DataService, 
+    private toastr: ToastrService) { }
   
   // producto:any 
  ngOnInit(){
@@ -83,5 +85,6 @@ export class ProductDetailComponent {
   add(){
     let obj:carTypeObj = {cant:this.cant,product:this.producto.title,value:this.producto.price,image:this.producto.thumbnail,id:this.producto.id};
     this.data.add_to_cart(obj,this.cant);
+      this.toastr.success( '+' + this.cant +' '+ this.producto.title,'Add to cart',{timeOut:1500});
   }
 }
