@@ -11,8 +11,7 @@
             <div class="col-lg-7 col-sm-12" >
                 <div style="width: fit-content;margin-left: auto;margin-right: auto;">
                     <img class="image-principal" src={{img_principal}} alt="" >
-                </div>
-               
+                </div>             
                 
             </div>
             <div class="d-sm-none mb-4" >
@@ -50,15 +49,17 @@
     </div>
     <hr>
     <h2 class="text-center mt-5 mb-5" style="color: #2f3b69;;">Similar Products</h2>
-   
+   <div>
     <div style="display: flex;" >
-        <button class="button-nav" (click)="scroll(-100)" ><i class="fa fa-chevron-left fa-3x" aria-hidden="true" style="margin-left: 20px;margin-right: 20px; color: #f68712;"></i>
+        <button class="button-nav d-none d-md-block" (click)="scroll(-100)" ><i class="fa fa-chevron-left fa-3x" aria-hidden="true" style="margin-left: 20px;margin-right: 20px; color: #f68712;"></i>
+        </button>
+        <button class="button-nav1 d-sm-none" (click)="scroll(-270)" ><i class="fa fa-chevron-left fa-2x" aria-hidden="true" style="color: #f68712;"></i>
         </button>
         <div class=" foto-list-container">
             @for( product of  lista_productos_similares; track product){
                 <div class=" foto-list " >
     
-                    <div class="container " style=" box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width: 250px;height: 350px; margin-right: 25px; cursor: pointer;" (click)="detail_product(product.id)">
+                    <div class="container card-similar " (click)="detail_product(product.id)">
                         <div style="height: 20px;"></div>
                         <div style="margin-left: auto;margin-right: auto;margin-bottom: 5px; ">
                             <img src={{product.thumbnail}} alt="" style="height: 150px;width: 100%;">
@@ -70,8 +71,7 @@
                        <div >
                         
                             <p class="text-center" style="margin-right: auto;color: rgb(15, 77, 158);font-size:25px;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"> ${{product.price}}</p>
-                            <!-- <app-rating [rating]="product.rating"></app-rating> -->
-                            
+                                                     
                         </div>
                                         
                     </div>
@@ -80,9 +80,13 @@
             
     
         </div>
-        <button class="button-nav" (click)="scroll(100)" >
+        <button class="button-nav d-none d-md-block" (click)="scroll(100)" >
             <i class="fa fa-chevron-right fa-3x" style="margin-left: 20px;margin-right: 20px; color: #f68712;" aria-hidden="true"></i>
         </button>
+        <button class="button-nav1 d-sm-none" (click)="scroll(270)" >
+            <i class="fa fa-chevron-right fa-2x" style=" color: #f68712;" aria-hidden="true"></i>
+        </button>
     </div>
-   
+   </div>
+    
 </div>

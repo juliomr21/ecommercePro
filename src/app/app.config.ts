@@ -5,7 +5,11 @@ import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+import { provideToastr } from 'ngx-toastr'
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideClientHydration(),provideHttpClient(),ReactiveFormsModule,FormsModule,HttpClientModule]
+  providers: [provideRouter(routes), provideClientHydration(),provideHttpClient(),
+    provideAnimations(), provideToastr()  ,ReactiveFormsModule,FormsModule,HttpClientModule]
 };

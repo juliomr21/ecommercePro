@@ -41,8 +41,8 @@ export class ProductDetailComponent {
         let aux: any = resp;
         this.producto = aux;
         this.img_principal = this.producto.thumbnail;
-        this.list_img_aux.push(this.img_principal);
-        this.list_img_aux = this.list_img_aux.concat(this.producto.images);
+        // this.list_img_aux.push(this.img_principal);
+        this.list_img_aux = this.producto.images;
         this.http_serv.get(`https://dummyjson.com/products/category/${this.producto.category}?limit=10`).subscribe(
         list_similar => {
           let list_temp:any = list_similar;
@@ -62,6 +62,7 @@ export class ProductDetailComponent {
     let container = document.querySelector('.foto-list-container')!;
     container.scrollLeft += amount;
   }
+ 
   detail_product(id:any){
     let url = `product-detail/${id}`;
     this.scrollToTop()

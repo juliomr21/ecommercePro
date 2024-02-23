@@ -3,12 +3,15 @@ import { HttpConectionService } from '../../service/http-conection.service';
 import { BannerCarouselComponent } from '../../shared/banner-carousel/banner-carousel.component';
 import { Router } from '@angular/router';
 import { DataService, carTypeObj } from '../../service/data.service';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { time } from 'console';
 @Component({
     selector: 'app-home',
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [BannerCarouselComponent]
+    imports: [BannerCarouselComponent],
+    
 })
 export class HomeComponent {
   list_original:any = [];
@@ -17,7 +20,8 @@ export class HomeComponent {
   constructor(
     private http:HttpConectionService,
     private router:Router,
-    private data:DataService){
+    private data:DataService,
+    private toastr: ToastrService){
 
   }
   ngOnInit():void{
@@ -66,5 +70,7 @@ export class HomeComponent {
   add(title:string,price:number,image:string,id:number){
     let obj:carTypeObj = {cant:1,product:title,value:price,image:image,id:id};
     this.data.add_to_cart(obj,1);
+    let msg = 'Add ' + title + ' to cart';
+    this.toastr.success( title,'Add to cart',{timeOut:1500});
   }
 }

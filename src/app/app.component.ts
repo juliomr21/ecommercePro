@@ -1,6 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavBarComponent } from "./Components/nav-bar/nav-bar.component";
+import { provideAnimations } from '@angular/platform-browser/animations';
+
+import { ToastrService, provideToastr } from 'ngx-toastr';
+
+
+
+
 
 @Component({
     selector: 'app-root',
@@ -9,6 +16,11 @@ import { NavBarComponent } from "./Components/nav-bar/nav-bar.component";
     styleUrl: './app.component.css',
     imports: [RouterOutlet, NavBarComponent]
 })
+
 export class AppComponent {
   title = 'ecommerce';
-}
+  constructor(private toastr: ToastrService){
+
+  }
+ }
+

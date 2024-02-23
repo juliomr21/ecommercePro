@@ -1,57 +1,105 @@
 .foto-list-container {
-    width: 100%; /* O el ancho que desees */
-    overflow-x: auto;
-    white-space: nowrap; /* Para que las imágenes estén en la misma línea */
-  }
-  
-  .foto-list {
-    display: inline-block;
-  }
-  .flex{
-    display: flex;
-  }
-  .button-nav {
-    margin: 5px;
-    background: transparent;
-    border: transparent;
-    height: 50px;
-    margin-top: auto;
-    margin-bottom: auto;
-  }
-  .image-principal{
-    /* height: 450px;
-    width: 100%; */
-    border-radius: 10px;
-    max-height: 400px;
-    width: 100%;
-  }
-  .marg-principal{
-    padding: 3rem;padding-left: 1rem;padding-right: 1rem;
-  }
-  .list-img-v{
-    overflow-y: auto;max-width: 450px;margin-bottom: 30px; max-height: 400px;
-  }
-  .list-img-h{
-    overflow-x: auto;white-space: nowrap; 
-  }
-  .img-aux{
-    margin-top: 25px; cursor: pointer;
-    width: 100%;height: 100%;
-  }
-  .dark-blue {
-    background: #2f3b69;
-    color: aliceblue;
+  width: 100%;
+  /* O el ancho que desees */
+  overflow-x: auto;
+  white-space: nowrap;
+  /* Para que las imágenes estén en la misma línea */
 }
-  @media(max-width:451px){
-    .image-principal{
-      height: 100%;
-      max-width: 100%;
-      max-height: 300px;
-    }
-    .img-aux{
-      margin-top: 25px; cursor: pointer; height: 50px;width: 50px; margin-right: 10px;
-      border-radius: 6px;
-    }
+
+.foto-list {
+  display: inline-block;
+}
+
+.card-similar {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 250px;
+  height: 350px;
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.button-nav {
+  margin: 5px;
+  background: transparent;
+  border: transparent;
+  height: 50px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.button-nav1 {
+
+  background: blue;
+  border: transparent;
+  height: 32px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 31px;
+}
+
+.image-principal {
+  /* height: 450px;
+    width: 100%; */
+  border-radius: 10px;
+  max-height: 400px;
+  width: 100%;
+}
+
+.marg-principal {
+  padding: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.list-img-v {
+  overflow-y: auto;
+  max-width: 450px;
+  margin-bottom: 30px;
+  max-height: 400px;
+}
+
+.list-img-h {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.img-aux {
+  margin-top: 25px;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.dark-blue {
+  background: #2f3b69;
+  color: aliceblue;
+}
+
+@media(max-width:451px) {
+  .image-principal {
+    height: 100%;
+    max-width: 100%;
+    max-height: 300px;
   }
 
- 
+  .img-aux {
+    margin-top: 25px;
+    cursor: pointer;
+    height: 50px;
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 6px;
+  }
+
+  .foto-list-container1 {
+    width: 300px;
+    background: red;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
