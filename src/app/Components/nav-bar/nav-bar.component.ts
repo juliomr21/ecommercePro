@@ -33,6 +33,7 @@ export class NavBarComponent {
     this.showCart = false;
    }
    go_to_payment(){
+    if(this.badge != 0)
     this.router.navigateByUrl('/checkout');
     this.showCart = false;
    }

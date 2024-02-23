@@ -22,14 +22,14 @@
                     </div>
                     <div style="display: flex;gap: 10px;margin-top: 15px;">
                         <div>
-                            <input type="text" id="name" class="form-control">
+                            <input type="text" id="name" class="form-control" mask="(00)00000-0000" >
                             <div>
                                 <label for="name">Celular</label>
                             </div>
 
                         </div>
                         <div>
-                            <input type="text" id="name" class="form-control">
+                            <input type="text" id="name" class="form-control" mask="000.000.000-00">
                             <div>
                                 <label for="name">CPF (Brasil)*</label>
                             </div>
@@ -42,7 +42,7 @@
                     <div class="flex" style="gap: 10px;">
                         <div style="display: flex;gap: 10px;">
                             <div>
-                                <input type="text" id="name" class="form-control" [(ngModel)]="cepTemp">
+                                <input type="text" id="name" class="form-control" [(ngModel)]="cepTemp"mask="00000-000">
                                 <label for="name">CEP (Brasil)*</label>
                             </div>
                             <div style="width: 150px;">
@@ -75,16 +75,25 @@
 
 
                     <h2>Payment method</h2>
-                    <input class="form-control" type="text" name="cardNum">
+                    <input class="form-control" type="text" name="cardNum" mask="0000 0000 0000 0000">
                     <label for="cardNum"> Card Number</label>
 
                     <div style="display: flex;gap: 10px;margin-top: 15px;">
                         <div>
-                            <input class="form-control" type="text" name="mes" placeholder="MM">
-                            <label for="mes"> Month</label>
+                            <select name="month" id="" class="form-control">
+                              @for(currentMonth of month;track month ){
+                                <option>{{currentMonth}}</option>
+                              }
+                            </select>
+                          
+                            <label for="month"> Month</label>
                         </div>
                         <div>
-                            <input class="form-control" type="text" name="mes" placeholder="YYYY">
+                            <select name="year" id="" class="form-control">
+                                @for(currentMonth of year;track year ){
+                                  <option>{{currentMonth}}</option>
+                                }
+                              </select>
                             <label for="mes"> Year</label>
                         </div>
                         <div>

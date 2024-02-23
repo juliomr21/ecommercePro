@@ -14,7 +14,7 @@
                         </div>
                         
                         <div class="price">
-                            <i class="fa fa-trash pointer" aria-hidden="true"  (click)="delete_product(product.id)"></i>
+                            <i class="fa fa-trash pointer" aria-hidden="true"  (click)="delete_product(product.id,product.product,product.cant)"></i>
                             <div class="cant-price">
                                 <h6 >{{product.cant}} X {{product.value}} = ${{product.cant * product.value}}</h6>
                             </div>

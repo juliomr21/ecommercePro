@@ -84,7 +84,14 @@ export class ProductDetailComponent {
   }
   add(){
     let obj:carTypeObj = {cant:this.cant,product:this.producto.title,value:this.producto.price,image:this.producto.thumbnail,id:this.producto.id};
-    this.data.add_to_cart(obj,this.cant);
+   if(this.cant < 1)
+   {
+      this.toastr.error('It is not possible to add ' + this.cant + ' '+ this.producto.title)
+   }else
+   {
+ this.data.add_to_cart(obj,this.cant);
       this.toastr.success( '+' + this.cant +' '+ this.producto.title,'Add to cart',{timeOut:1500});
+   }
+   
   }
 }

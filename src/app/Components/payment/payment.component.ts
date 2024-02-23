@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CartComponent } from '../../shared/cart/cart.component';
 import { HttpConectionService } from '../../service/http-conection.service';
 import { FormsModule } from '@angular/forms';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CartComponent,FormsModule],
+  imports: [CartComponent,FormsModule,NgxMaskDirective],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css'
 })
@@ -24,6 +25,9 @@ export class PaymentComponent {
     "siafi": "0921"
   };
   cepTemp = '';
+  month = ['01','02','03','04','05','06','07','08','09','10','11','12'];
+  year = ['2024','2025','2026','2027','2028','2029','2030','2031','2032','2033','2034'];
+
   constructor(private http: HttpConectionService){
 
   }
