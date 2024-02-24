@@ -1,0 +1,22 @@
+.card-product {
+    height: 300px;
+    margin-right: auto;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    border: solid 1px rgba(0, 0, 0, 0.24);
+    border-radius: 4px;
+    width: 23%;
+    cursor: pointer;
+}
+.card-product:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 3px 8px 8px;
+    background: aliceblue;
+}
+@media(max-width: 450px){
+    .card-product{
+        width: 85%;
+        margin: auto;
+    }
+}
+.add-cart{
+    background: #2f3b69;color: aliceblue;
+ }

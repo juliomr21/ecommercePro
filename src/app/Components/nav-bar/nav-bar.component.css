@@ -2,6 +2,20 @@
     background: #2f3b69;
     color: aliceblue;
 }
+.nb-link{
+  cursor: pointer;
+  
+  
+}
+
+.sub-menu{
+  position: absolute;background: #2f3b69;
+                color: aliceblue;left: 101%;margin-top: -90px;
+              
+}
+.angule{
+ margin-left: auto;margin-top: auto;margin-bottom: auto;
+}
 
 .nav-background {
     padding: 1rem;
@@ -17,8 +31,11 @@
 }
 .nav-link:hover{
     color: #dad23e;
+    
 }
-
+.nav-link-sup:hover{
+  border-bottom: solid 1px #dad23e;
+}
 .h-center {
     display: flex;
     align-items: center;
@@ -46,6 +63,15 @@
     margin-left: auto;
     width: fit-content;
     margin-right: 5px;
+}
+.lupa{
+  margin-left: -38px;
+  margin-top: 2px;
+  color: #2f3b69;
+  cursor: pointer;
+}
+.inp{
+  padding: 0.375rem 2.75rem;
 }
 
 .cart-sh {
@@ -79,6 +105,10 @@
   .nav-link{
     padding: 1rem;
     cursor: pointer;
+  }
+ 
+  .nb-link:hover{
+    border-bottom: solid 2px yellow;
   }
   .menu-movil{
     background: #2f3b69; z-index: 105; opacity: 1;height: 95%;width: 50%;position: absolute;color:aliceblue ;top:0
