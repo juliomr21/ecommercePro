@@ -13,21 +13,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SearchPageComponent {
   url = 'https://dummyjson.com/products/search?q=';
   show_list_products:any[] = [];
+  notfound = true;
 constructor(private http:HttpConectionService,private queryRoute:ActivatedRoute, private router: Router){
 
 }
-// OnInit(){
-//   console.log('entro')
-//   this.queryRoute.queryParams.subscribe(params => {
-//     console.log(params); 
-// })}
+
 ngOnInit(){
   
    this.queryRoute.queryParams.subscribe(params => {
     let temp:any = params;
     this.http.get(this.url + temp.q).subscribe(resp => {
       let list_aux:any = resp;
-      this.show_list_products = list_aux.products
+      this.show_list_products = list_aux.products;
+      if(this.show_list_products.length != 0)
+      this.notfound = false;
       
     })
 })
