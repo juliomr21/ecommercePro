@@ -25,14 +25,17 @@ export class NavBarComponent {
   automotive = false;
   category_temp = '';
   search = '';
+  showNav = true;
+  currentUser = 'User';
 
   constructor(private data: DataService, private router: Router) {
 
   }
-
+ 
   ngOnInit(): void {
     this.show_badge();
-
+    this.data.get_Shownav$().subscribe(resp => this.showNav = resp);
+    this.data.get_user$().subscribe(resp => this.currentUser = resp);
   }
   show_badge() {
     this.data.get_badge().subscribe(resp => this.badge = resp);
@@ -88,6 +91,10 @@ export class NavBarComponent {
   }
   go_to_search(){
     this.router.navigate(['/search'],{queryParams:{q:this.search}});
+  }
+  logout(){
+    this.data.set_user('User');
+    this.menuMovil = false;
   }
 }
 

@@ -13,10 +13,20 @@ export class DataService {
   private cartContent$: Subject<carTypeObj[]> = new Subject <carTypeObj[]>();
   private total:number = 0;
   private total$:Subject<number> = new Subject();
+  private showNav:boolean;
+  private showNav$: Subject<boolean>;
+  private user:string = 'user';
+  private user$:Subject<string>;
+
   constructor() {
     this.badge$.next(this.badge)
     this.cartContent$.next(this.cartContent);
     this.total$.next(this.total);
+    this.showNav = true;
+    this.showNav$ = new Subject()
+    this.showNav$.next(this.showNav);
+    this.user$ = new Subject();
+    this.user$.next(this.user);
   }
   get_badge() {
     return this.badge$.asObservable();
@@ -76,6 +86,20 @@ export class DataService {
   get_total$(){
     this.total$.next(this.total)
     return this.total$.asObservable();
+  }
+  set_Shownav(modo:boolean){
+    this.showNav = modo;
+    this.showNav$.next(this.showNav);
+  }
+  get_Shownav$(){
+    return this.showNav$.asObservable();
+  }
+  get_user$(){
+    return this.user$.asObservable();
+  }
+  set_user(currentUser:string){
+    this.user = currentUser;
+    this.user$.next(this.user);
   }
 }
 

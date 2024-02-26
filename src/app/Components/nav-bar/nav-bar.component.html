@@ -1,277 +1,303 @@
-@if(showCart){
-<div class="vh-100" style="background: rgb(3, 0, 8);width: 100%;z-index: 100;position: fixed;opacity: 90%;"
-    (click)="showCart = false;">
-
-</div>
-<div class="cart-sh" style=" background: aliceblue; z-index: 105; opacity: 1;height: 95%;">
-    <div class="card-cart">
-        <h2 class="bar-title-card">
-
-            Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
-            <div style="margin-left: auto;">
-                <button style="color: aliceblue;border: transparent;background: transparent;"
-                    (click)="showCart = !showCart">X</button>
-            </div>
-        </h2>
-        <div style="padding: 1rem;height: 100%;">
-            <app-cart></app-cart>
-            <div class="mt-3">
-                @if(badge != 0){
-                    <div>
-                        <button class=" btn btn-payment" (click)="go_to_payment()">Proceed to checkout <i
-                                class="fa-solid fa-money-check-dollar"></i>
-                        </button>
+@if(showNav){
+    @if(showCart){
+        <div class="vh-100" style="background: rgb(3, 0, 8);width: 100%;z-index: 100;position: fixed;opacity: 90%;"
+            (click)="showCart = false;">
+        
+        </div>
+        <div class="cart-sh" style=" background: aliceblue; z-index: 105; opacity: 1;height: 95%;">
+            <div class="card-cart">
+                <h2 class="bar-title-card">
+        
+                    Shopping Cart <i class="fa-solid fa-cart-shopping"></i>
+                    <div style="margin-left: auto;">
+                        <button style="color: aliceblue;border: transparent;background: transparent;"
+                            (click)="showCart = !showCart">X</button>
                     </div>
-                }
+                </h2>
+                <div style="padding: 1rem;height: 100%;">
+                    <app-cart></app-cart>
+                    <div class="mt-3">
+                        @if(badge != 0){
+                            <div>
+                                <button class=" btn btn-payment" (click)="go_to_payment()">Proceed to checkout <i
+                                        class="fa-solid fa-money-check-dollar"></i>
+                                </button>
+                            </div>
+                        }
+                        
+                    </div>
+                    <p class="text-center mt-3" (click)="go_to_product()" style="cursor: pointer;">See more products
+                        <i class="fa-regular fa-eye"></i>
+                    </p>
+                </div>
+        
+            </div>
+        
+        </div>
+        }
+        
+        <div class="nav-background dark-blue  ">
+            <div class="d-none d-md-block container  ">
+                <div class="row h-center">
+                    <div class="col-3">
+                        <div class="img-size" [routerLink]="['']">
+                            <img class="full-img" src="assets/oficial.png" alt="">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div style="display: flex;">
+                            <input class="form-control inp" type="search" name="" id="" [(ngModel)]="search" (keyup.enter)="go_to_search()">
+                            <i class="fa fa-search fa-2x  lupa" aria-hidden="true" (click)="go_to_search()"></i>
+                        </div>
+                       
+                    </div>
+                   <div class="col-1">
+
+                   </div>
+                    <div class="col-2 ">
+                        <div class="row w-center">
+                            <div class="col" style="cursor: pointer;" [routerLink]="['/login']">
+                                <div>
+                                    <i class="fa-solid fa-user fa-2xl"></i>
+                                    <h6 class="mt-2">{{currentUser}}</h6>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div (click)="showCart = !showCart" style="cursor: pointer;">
+                                    <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                                    <span class="position-absolute   translate-middle badge rounded-pill bg-danger">
+                                        {{badge}}
+                                    </span>
+                                    <h6 class="mt-2">My cart</h6>
+                                </div>
+                            </div>
+                           
+                            
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+        
+            </div>
+            <div class="d-sm-none">
+        
+                <div>
+                    <div class="row h-center">
+                        <div class="col" style="cursor: pointer;" (click)="menuMovil = true">
+                            <i class="fa fa-bars fa-2xl" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-6 img-size" [routerLink]="['']">
+                            <img class="full-img" src="assets/oficial.png" alt="">
+                        </div>
+                        <div class="col">
+                            <div class="left-cont " (click)="showCart = !showCart " style="cursor: pointer;">
+                                <i class="fa-solid fa-cart-shopping fa-2xl" id="openModalBtn"></i>
+                                <span class="position-absolute   translate-middle badge rounded-pill bg-danger">
+                                    {{badge}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div style="display: flex;">
+                        <input class="form-control inp" type="search" name="" id="" [(ngModel)]="search" (keyup.enter)="go_to_search()">
+                        <i class="fa fa-search fa-2x  lupa" aria-hidden="true" (click)="go_to_search()"></i>
+                    </div>
+                </div>
+        
+            </div>
+        
+        </div>
+        <div class=" dark-blue d-none d-md-block" style="border-top: solid 1px aliceblue;">
+            <div class="container" style="display: flex;justify-content: space-between;padding: 5px;">
+                <a class="nav-link nb-link" [routerLink]="['/products/all']">Products</a>
+                <div  (mouseleave)="smartphoneLaptop = false" (click)="smartphoneLaptop = !smartphoneLaptop">
+                    <a class="nav-link nb-link">Smartphone & Laptop</a>
+                   @if(smartphoneLaptop){
+                    <a class="nav-link" [routerLink]="['/products/smartphones']">Smartphone</a>
+                    <a class="nav-link" [routerLink]="['/products/laptops']">Laptop</a>
+                   }
+                    
+                </div>
+                <div  (mouseleave)="oilfragance = false" (click)="oilfragance = !oilfragance">
+                    <a class="nav-link nb-link" >Skincare & Fragrances</a>
+                    @if(oilfragance){
+                        <a class="nav-link" [routerLink]="['/products/fragrances']">Fragrances</a>
+                    <a class="nav-link" [routerLink]="['/products/skincare']">Skincare</a>
+                    }
+                </div>
+                <div   (mouseleave)="homedecoration = false" (click)="homedecoration = !homedecoration">
+                    <a class="nav-link nb-link" >Home & Decoration</a>
+                    @if(homedecoration){
+                        <a class="nav-link" [routerLink]="['/products/furniture']">Furniture</a>
+                        <a class="nav-link" [routerLink]="['/products/home-decoration']">Home-decoration</a>
+                        <a class="nav-link" [routerLink]="['/products/lighting']">Lighting</a>
+                        <a class="nav-link" [routerLink]="['/products/groceries']">Groceries</a>
+                    }
+                </div>
+                <div  (mouseleave)="womens = false" (click)="womens = !womens">
+                    <a class="nav-link nb-link" >Womens</a>
+                    @if(womens){
+                        <a class="nav-link" [routerLink]="['/products/womens-dresses']">Womens-dressesn</a>
+                        <a class="nav-link" [routerLink]="['/products/womens-shoes']">Womens-shoes</a>
+                        <a class="nav-link" [routerLink]="['/products/womens-watches']">Womens-watches</a>
+                        <a class="nav-link" [routerLink]="['/products/womens-bags']">Womens-bags</a>
+                        <a class="nav-link" [routerLink]="['/products/womens-jewellery']">Womens-jewellery</a>
+                    }
+                </div>
+                <div  (mouseleave)="mens = false" (click)="mens = !mens">
+                    <a class="nav-link nb-link" >Mens</a>
+                    @if(mens){
+                      
+                        <a class="nav-link" [routerLink]="['/products/mens-shirts']">Mens-shirts</a>
+                        <a class="nav-link" [routerLink]="['/products/mens-shoes']">Mens-shoes</a>
+                        <a class="nav-link" [routerLink]="['/products/mens-watches']">Mens-watches</a>
+                        <a class="nav-link" [routerLink]="['/products/sunglasses']">Sunglasses</a>
+                        <a class="nav-link" [routerLink]="['/products/tops']">Tops</a>
+                    }
+                </div>
+                <div  (mouseleave)="automotive = false" (click)="automotive = !automotive">
+                    <a class="nav-link nb-link" >Automotive</a>
+                    @if(automotive){
+                        <a class="nav-link" [routerLink]="['/products/automotive']">Automotive</a>
+                        <a class="nav-link" [routerLink]="['/products/motorcycle']">Motorcycle</a>
+                    }
+                </div>
+               
+                      
+            </div>
+        
+        </div>
+        @if(menuMovil){
+        <div class="container menu-movil" >
+            <h2 style="text-align: right;padding: 1rem;" (click)="menu_close()">x</h2>
+         
+            <div class="container" style="padding: 5px;">
+                <a class=" nav-link" (click)="go_to_category('all')">Products</a>
+                <div (click)="select_category('smartphoneLaptop')">
+                    <div style="display: flex;">
+                        <a class="nav-link">Smartphone & Laptop</a>
+                        <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                    </div>
+                   
+                   @if(smartphoneLaptop){
+                    <div class="sub-menu">
+                        <a class="nav-link" (click)="go_to_category('smartphones')">Smartphone</a>
+                        <a class="nav-link" (click)="go_to_category('laptops')">Laptop</a>
+                    </div>
+                   
+                   }
+                    
+                </div>
+                <div (click)="select_category('oilfragance')">
+                    <div style="display: flex;">
+                        <a class=" nav-link" >Skincare & Fragrances</a>
+                        <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                    </div>
+                   
+                    @if(oilfragance){
+                        <div class="sub-menu">
+                            <a class="nav-link"  (click)="go_to_category('fragrances')">Fragrances</a>
+                            <a class="nav-link"  (click)="go_to_category('skincare')">Skincare</a>
+                        </div>
+                      
+                    }
+                </div>
+                <div (click)="select_category('homedecoration')">
+                    <div style="display: flex;">
+                        <a class="nav-link" >Home & Decoration</a>
+                        <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                    </div>
+                   
+                    @if(homedecoration){
+                        <div class="sub-menu">
+                            <a class="nav-link"  (click)="go_to_category('furniture')">Furniture</a>
+                            <a class="nav-link" (click)="go_to_category('home-decoration')">Home-decoration</a>
+                            <a class="nav-link" (click)="go_to_category('lighting')">Lighting</a>
+                            <a class="nav-link" (click)="go_to_category('groceries')">Groceries</a>
+                        </div>
+                       
+                    }
+                </div>
+                <div (click)="select_category('womens')">
+                    <div style="display: flex;">
+                        <a class="nav-link" >Womens</a>
+                        <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                    </div>
+                   
+                    @if(womens){
+                        <div class="sub-menu">
+                            <a class="nav-link" (click)="go_to_category('womens-dresses')">Womens-dressesn</a>
+                            <a class="nav-link" (click)="go_to_category('womens-shoes')">Womens-shoes</a>
+                            <a class="nav-link" (click)="go_to_category('womens-watches')">Womens-watches</a>
+                            <a class="nav-link" (click)="go_to_category('womens-bags')">Womens-bags</a>
+                            <a class="nav-link" (click)="go_to_category('womens-jewellery')">Womens-jewellery</a>
+                        </div>
+                      
+                    }
+                </div>
+                <div (click)="select_category('mens')">
+                    <div style="display: flex;">
+                        <a class="nav-link" >Mens</a>
+                        <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                    </div>
+                  
+                    @if(mens){
+                      <div class="sub-menu">
+                        <a class="nav-link" (click)="go_to_category('mens-shirts')">Mens-shirts</a>
+                        <a class="nav-link" (click)="go_to_category('mens-shoes')">Mens-shoes</a>
+                        <a class="nav-link" (click)="go_to_category('mens-watches')">Mens-watches</a>
+                        <a class="nav-link" (click)="go_to_category('sunglasses')">Sunglasses</a>
+                        <a class="nav-link" (click)="go_to_category('tops')">Tops</a>
+                      </div>
+                      
+                    }
+                </div>
+                <div (click)="select_category('automotive')">
+                    <div style="display: flex;">
+                        <a class="nav-link" >Automotive</a>
+                        <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
+                    </div>
+                    
+                    @if(automotive){
+                        <div class="sub-menu">
+                            <a class="nav-link"  (click)="go_to_category('automotive')">Automotive</a>
+                            <a class="nav-link"  (click)="go_to_category('motorcycle')">Motorcycle</a>
+                        </div>
+                       
+                    }
+                </div>
+               
+                <hr>
                 
-            </div>
-            <p class="text-center mt-3" (click)="go_to_product()" style="cursor: pointer;">See more products
-                <i class="fa-regular fa-eye"></i>
-            </p>
-        </div>
-
-    </div>
-
-</div>
-}
-
-<div class="nav-background dark-blue  ">
-    <div class="d-none d-md-block container  ">
-        <div class="row h-center">
-            <div class="col-3">
-                <div class="img-size" [routerLink]="['']">
-                    <img class="full-img" src="assets/oficial.png" alt="">
-                </div>
-            </div>
-            <div class="col-6">
-                <div style="display: flex;">
-                    <input class="form-control inp" type="search" name="" id="" [(ngModel)]="search" (keyup.enter)="go_to_search()">
-                    <i class="fa fa-search fa-2x  lupa" aria-hidden="true" (click)="go_to_search()"></i>
-                </div>
-               
-            </div>
-            <div class="col-1">
-
-            </div>
-            <div class="col-2 ">
-                <div class="row w-center">
-                    <div class="col">
-                        <div>
-                            <i class="fa-solid fa-user fa-2xl"></i>
-                            <h6 class="mt-2">User</h6>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div (click)="showCart = !showCart" style="cursor: pointer;">
-                            <i class="fa-solid fa-cart-shopping fa-2xl"></i>
-                            <span class="position-absolute   translate-middle badge rounded-pill bg-danger">
-                                {{badge}}
-                            </span>
-                            <h6 class="mt-2">User</h6>
-                        </div>
-                    </div>
-                </div>
+                  <div style="display: flex;gap: 10px;align-items: center;cursor: pointer;" [routerLink]="['/login']" (click)="menuMovil = false" >
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <a >{{currentUser}}</a>
+                   
+                  </div>
+                  <hr>
+                 
+                  @if(currentUser == 'User'){
+                    <div style="display: flex;gap: 10px;align-items: center;cursor: pointer;" [routerLink]="['/register']" (click)="menuMovil = false">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        <a >Create account</a>
+                      </div>
+                  }@else {
+                    <div style="display: flex;gap: 10px;align-items: center;cursor: pointer;"  (click)="logout()">
+                       <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        <a >Sign-out</a>
+                      </div>
+                  }
+                 
             </div>
         </div>
-
-    </div>
-    <div class="d-sm-none">
-
-        <div>
-            <div class="row h-center">
-                <div class="col" style="cursor: pointer;" (click)="menuMovil = true">
-                    <i class="fa fa-bars fa-2xl" aria-hidden="true"></i>
-                </div>
-                <div class="col-6 img-size" [routerLink]="['']">
-                    <img class="full-img" src="assets/oficial.png" alt="">
-                </div>
-                <div class="col">
-                    <div class="left-cont " (click)="showCart = !showCart " style="cursor: pointer;">
-                        <i class="fa-solid fa-cart-shopping fa-2xl" id="openModalBtn"></i>
-                        <span class="position-absolute   translate-middle badge rounded-pill bg-danger">
-                            {{badge}}
-                        </span>
-                    </div>
-                </div>
-            </div>
+        
+        <div class="vh-100" style="background: rgb(3, 0, 8);width: 100%;z-index: 100;position: fixed;opacity: 90%;top: 0;"
+            (click)="menuMovil = false;">
+        
+        
         </div>
-        <div>
-            <div style="display: flex;">
-                <input class="form-control inp" type="search" name="" id="" [(ngModel)]="search" (keyup.enter)="go_to_search()">
-                <i class="fa fa-search fa-2x  lupa" aria-hidden="true" (click)="go_to_search()"></i>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-<div class=" dark-blue d-none d-md-block" style="border-top: solid 1px aliceblue;">
-    <div class="container" style="display: flex;justify-content: space-between;padding: 5px;">
-        <a class="nav-link nb-link" [routerLink]="['/products/all']">Products</a>
-        <div  (mouseleave)="smartphoneLaptop = false" (click)="smartphoneLaptop = !smartphoneLaptop">
-            <a class="nav-link nb-link">Smartphone & Laptop</a>
-           @if(smartphoneLaptop){
-            <a class="nav-link" [routerLink]="['/products/smartphones']">Smartphone</a>
-            <a class="nav-link" [routerLink]="['/products/laptops']">Laptop</a>
-           }
-            
-        </div>
-        <div  (mouseleave)="oilfragance = false" (click)="oilfragance = !oilfragance">
-            <a class="nav-link nb-link" >Skincare & Fragrances</a>
-            @if(oilfragance){
-                <a class="nav-link" [routerLink]="['/products/fragrances']">Fragrances</a>
-            <a class="nav-link" [routerLink]="['/products/skincare']">Skincare</a>
-            }
-        </div>
-        <div   (mouseleave)="homedecoration = false" (click)="homedecoration = !homedecoration">
-            <a class="nav-link nb-link" >Home & Decoration</a>
-            @if(homedecoration){
-                <a class="nav-link" [routerLink]="['/products/furniture']">Furniture</a>
-                <a class="nav-link" [routerLink]="['/products/home-decoration']">Home-decoration</a>
-                <a class="nav-link" [routerLink]="['/products/lighting']">Lighting</a>
-                <a class="nav-link" [routerLink]="['/products/groceries']">Groceries</a>
-            }
-        </div>
-        <div  (mouseleave)="womens = false" (click)="womens = !womens">
-            <a class="nav-link nb-link" >Womens</a>
-            @if(womens){
-                <a class="nav-link" [routerLink]="['/products/womens-dresses']">Womens-dressesn</a>
-                <a class="nav-link" [routerLink]="['/products/womens-shoes']">Womens-shoes</a>
-                <a class="nav-link" [routerLink]="['/products/womens-watches']">Womens-watches</a>
-                <a class="nav-link" [routerLink]="['/products/womens-bags']">Womens-bags</a>
-                <a class="nav-link" [routerLink]="['/products/womens-jewellery']">Womens-jewellery</a>
-            }
-        </div>
-        <div  (mouseleave)="mens = false" (click)="mens = !mens">
-            <a class="nav-link nb-link" >Mens</a>
-            @if(mens){
-              
-                <a class="nav-link" [routerLink]="['/products/mens-shirts']">Mens-shirts</a>
-                <a class="nav-link" [routerLink]="['/products/mens-shoes']">Mens-shoes</a>
-                <a class="nav-link" [routerLink]="['/products/mens-watches']">Mens-watches</a>
-                <a class="nav-link" [routerLink]="['/products/sunglasses']">Sunglasses</a>
-                <a class="nav-link" [routerLink]="['/products/tops']">Tops</a>
-            }
-        </div>
-        <div  (mouseleave)="automotive = false" (click)="automotive = !automotive">
-            <a class="nav-link nb-link" >Automotive</a>
-            @if(automotive){
-                <a class="nav-link" [routerLink]="['/products/automotive']">Automotive</a>
-                <a class="nav-link" [routerLink]="['/products/motorcycle']">Motorcycle</a>
-            }
-        </div>
-       
-              
-    </div>
-
-</div>
-@if(menuMovil){
-<div class="container menu-movil" >
-    <h2 style="text-align: right;padding: 1rem;" (click)="menu_close()">x</h2>
- 
-    <div class="container" style="padding: 5px;">
-        <a class=" nav-link" (click)="go_to_category('all')">Products</a>
-        <div (click)="select_category('smartphoneLaptop')">
-            <div style="display: flex;">
-                <a class="nav-link">Smartphone & Laptop</a>
-                <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-            </div>
-           
-           @if(smartphoneLaptop){
-            <div class="sub-menu">
-                <a class="nav-link" (click)="go_to_category('smartphones')">Smartphone</a>
-                <a class="nav-link" (click)="go_to_category('laptops')">Laptop</a>
-            </div>
-           
-           }
-            
-        </div>
-        <div (click)="select_category('oilfragance')">
-            <div style="display: flex;">
-                <a class=" nav-link" >Skincare & Fragrances</a>
-                <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-            </div>
-           
-            @if(oilfragance){
-                <div class="sub-menu">
-                    <a class="nav-link"  (click)="go_to_category('fragrances')">Fragrances</a>
-                    <a class="nav-link"  (click)="go_to_category('skincare')">Skincare</a>
-                </div>
-              
-            }
-        </div>
-        <div (click)="select_category('homedecoration')">
-            <div style="display: flex;">
-                <a class="nav-link" >Home & Decoration</a>
-                <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-            </div>
-           
-            @if(homedecoration){
-                <div class="sub-menu">
-                    <a class="nav-link"  (click)="go_to_category('furniture')">Furniture</a>
-                    <a class="nav-link" (click)="go_to_category('home-decoration')">Home-decoration</a>
-                    <a class="nav-link" (click)="go_to_category('lighting')">Lighting</a>
-                    <a class="nav-link" (click)="go_to_category('groceries')">Groceries</a>
-                </div>
-               
-            }
-        </div>
-        <div (click)="select_category('womens')">
-            <div style="display: flex;">
-                <a class="nav-link" >Womens</a>
-                <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-            </div>
-           
-            @if(womens){
-                <div class="sub-menu">
-                    <a class="nav-link" (click)="go_to_category('womens-dresses')">Womens-dressesn</a>
-                    <a class="nav-link" (click)="go_to_category('womens-shoes')">Womens-shoes</a>
-                    <a class="nav-link" (click)="go_to_category('womens-watches')">Womens-watches</a>
-                    <a class="nav-link" (click)="go_to_category('womens-bags')">Womens-bags</a>
-                    <a class="nav-link" (click)="go_to_category('womens-jewellery')">Womens-jewellery</a>
-                </div>
-              
-            }
-        </div>
-        <div (click)="select_category('mens')">
-            <div style="display: flex;">
-                <a class="nav-link" >Mens</a>
-                <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-            </div>
-          
-            @if(mens){
-              <div class="sub-menu">
-                <a class="nav-link" (click)="go_to_category('mens-shirts')">Mens-shirts</a>
-                <a class="nav-link" (click)="go_to_category('mens-shoes')">Mens-shoes</a>
-                <a class="nav-link" (click)="go_to_category('mens-watches')">Mens-watches</a>
-                <a class="nav-link" (click)="go_to_category('sunglasses')">Sunglasses</a>
-                <a class="nav-link" (click)="go_to_category('tops')">Tops</a>
-              </div>
-              
-            }
-        </div>
-        <div (click)="select_category('automotive')">
-            <div style="display: flex;">
-                <a class="nav-link" >Automotive</a>
-                <span class="angule"><i class="fa fa-angle-right" aria-hidden="true"></i></span>
-            </div>
-            
-            @if(automotive){
-                <div class="sub-menu">
-                    <a class="nav-link"  (click)="go_to_category('automotive')">Automotive</a>
-                    <a class="nav-link"  (click)="go_to_category('motorcycle')">Motorcycle</a>
-                </div>
-               
-            }
-        </div>
-       
-           
-    </div>
-</div>
-
-<div class="vh-100" style="background: rgb(3, 0, 8);width: 100%;z-index: 100;position: fixed;opacity: 90%;top: 0;"
-    (click)="menuMovil = false;">
-
-
-</div>
+        }
 }

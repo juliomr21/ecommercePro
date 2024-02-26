@@ -1,0 +1,32 @@
+<div style="display: flex;align-items: center;justify-content: center;height: 100vh;">
+    <div>
+        <div class="w-center"  [routerLink]="['']">
+            <img style="cursor: pointer;width: 100%;" src="assets/oficial.png" alt="">
+        </div>
+        <div class="w-center" style="padding: 2rem;">
+            <h2 class="text-center">Login <i  class="fa fa-user-circle" aria-hidden="true"></i></h2>
+            <div class="mt-3">
+                <input type="text" id="name" class="form-control" mask="000.000.000-00" [(ngModel)]="cpf">
+                <div>
+                    <label for="name">CPF (Brasil)*</label>
+                </div>
+        
+            </div> 
+            <div style="margin-top: 15px;">
+                <input type="password" id="password" class="form-control" [(ngModel)]="password">
+                <div>
+                    <label for="password">Password*</label>
+                </div>
+        
+            </div>
+            <div class="mt-4">
+                <button class="btn dark-blue form-control" (click)="login()">Continue</button>
+            </div>
+            <div class="text-center mt-3">
+                <a  [routerLink]="['/register']">Create your FakeStore account</a>
+            </div>
+           
+        </div>
+    </div>   
+   
+</div>

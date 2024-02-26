@@ -1,0 +1,141 @@
+<div class="mt-4 mb-4">
+    <div class="w-center"  [routerLink]="['']">
+        <img style="cursor: pointer;width: 100%;" src="assets/oficial.png" alt="">
+    </div>
+    <div class="w-center">
+        
+        <div style="display: flex;justify-content: center;margin-top: 15px;">
+            <div style="margin-right: 6px;"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+            
+            <h6>Fakestore is an example online store. The data will only be in your browser.</h6>
+        </div>
+        <form [formGroup]="form" class="container">
+            <h1>Contact data</h1>
+            <div style="margin-top: 25px;">
+                <input type="text" id="name" class="form-control" formControlName="name">
+                <div>
+                    <label for="name">Name*</label>
+                </div>
+
+            </div>
+            <div style="margin-top: 15px;">
+                <input type="text" id="name" class="form-control" formControlName="email">
+                <div>
+                    <label for="name">E-mail*</label>
+                </div>
+
+            </div>
+            <div class="flex">
+                <div class="mt-3">
+                    <input type="text" id="name" class="form-control" mask="(00)00000-0000" formControlName="cell">
+                    <div>
+                        <label for="name">Cell phone*</label>
+                    </div>
+
+                </div>
+                <div class="mt-3" style="margin-left: auto;">
+                    <input type="text" id="name" class="form-control" mask="000.000.000-00" formControlName="cpf">
+                    <div>
+                        <label for="name">CPF (Brasil)*</label>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <h2 style="margin-top: 25px;">Data for delivery</h2>
+            <div class="flex" style="gap: 10px;">
+                <div style="display: flex;gap: 10px;">
+                    <div>
+                        <input type="search" id="name" class="form-control" mask="00000-000" (keyup.enter)="search_cep()" formControlName="cep">
+                        <label for="name">CEP (Brasil)*</label>
+                    </div>
+                    <div style="width: 150px;">
+                        <button class="btn" style="color: aliceblue;background: #2f3b69;" (click)="search_cep()">Search <i
+                                class="fa fa-search" aria-hidden="true"></i> </button>
+                    </div>
+                </div>
+
+                <div class="top15" style="display: flex;gap: 10px;">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <div>
+                        <div>{{cep.logradouro}}</div>
+                        <div>CEP {{cep.cep}}-{{cep.bairro}}. {{cep.localidade}}-{{cep.uf}}</div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div style="display: flex;gap: 10px;margin-top: 15px;margin-bottom: 15px;">
+                <div>
+                    <input type="text" name="numero" class="form-control" formControlName="number">
+                    <label for="numero">Number*</label>
+                </div>
+                <div>
+                    <input type="text" name="complemento" class="form-control" formControlName="complemento">
+                    <label for="complemento">Complement</label>
+                </div>
+
+            </div>
+            <div style="margin-top: 15px;">
+                <input type="password" id="password" class="form-control" formControlName="senha">
+                <div>
+                    <label for="password">Password*</label>
+                </div>
+
+            </div>
+            <div style="margin-top: 15px;">
+                <input type="password" id="confirm" class="form-control" formControlName="rsenha">
+                <div>
+                    <label for="confirm">Confirm password*</label>
+                </div>
+
+            </div>
+
+            <div class="mt-4">
+                <button class="btn dark-blue form-control" (click)="register()">Continue</button>
+            </div>
+            <div style="display: flex;justify-content: center;margin-top: 15px;">
+                <div style="margin-right: 6px;"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+                
+                <h6>Fakestore is an example online store. The data will only be in your browser.</h6>
+            </div>
+           
+
+            <!-- <h2>Payment method</h2>
+            <input class="form-control" type="text" name="cardNum" mask="0000 0000 0000 0000">
+            <label for="cardNum"> Card Number</label>
+
+            <div style="display: flex;gap: 10px;margin-top: 15px;">
+                <div>
+                    <select name="month" id="" class="form-control">
+                      @for(currentMonth of month;track month ){
+                        <option>{{currentMonth}}</option>
+                      }
+                    </select>
+                  
+                    <label for="month"> Month</label>
+                </div>
+                <div>
+                    <select name="year" id="" class="form-control">
+                        @for(currentMonth of year;track year ){
+                          <option>{{currentMonth}}</option>
+                        }
+                      </select>
+                    <label for="mes"> Year</label>
+                </div>
+                <div>
+                    <input class="form-control" type="text" name="mes" style="width: 100px;">
+                    <label for="mes"> cvv or cvc</label>
+                </div>
+            </div>
+            <div style="margin-top: 15px;">
+                <div>
+                    <input class="form-control" type="text" name="mes" placeholder="MM">
+                    <label for="mes"> Your name on the card:</label>
+                </div>
+
+            </div>   -->
+        </form>
+    </div>
+</div>

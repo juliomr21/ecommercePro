@@ -6,6 +6,9 @@ import { CartComponent } from './shared/cart/cart.component';
 import { ProductsComponent } from './Components/products/products.component';
 import { PaymentComponent } from './Components/payment/payment.component';
 import { SearchPageComponent } from './Components/search-page/search-page.component';
+import { register } from 'module';
+import { RegisterComponent } from './Components/register/register.component';
+import { LoginComponent } from './Components/login/login.component';
 
 export const routes: Routes = [
     {
@@ -31,5 +34,13 @@ export const routes: Routes = [
     {
         path: 'search',
         component:SearchPageComponent
+    },
+    {
+        path: 'register',
+        component: RegisterComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
     }
 ];
