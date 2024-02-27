@@ -27,6 +27,7 @@ export class NavBarComponent {
   search = '';
   showNav = true;
   currentUser = 'User';
+  cargImg = false;
 
   constructor(private data: DataService, private router: Router) {
 
@@ -93,6 +94,10 @@ export class NavBarComponent {
   logout(){
     this.data.set_user('User');
     this.menuMovil = false;
+  }
+  print(){
+    // console.log('cargo imagen')
+    this.cargImg =true
   }
 }
 

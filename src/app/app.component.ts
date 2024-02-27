@@ -20,6 +20,7 @@ import { FootComponent } from './shared/foot/foot.component';
 
 export class AppComponent {
   title = 'ecommerce';
+  temp = false;
   constructor(private toastr: ToastrService){
 
   }
