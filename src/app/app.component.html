@@ -1,14 +1,8 @@
 <app-nav-bar></app-nav-bar>
-
-@defer (on viewport) {
- 
-
-  <div (mousemove)="temp = true" (scroll)="temp = true" (drop)="temp = true" (transitionstart)="temp = false">
+<div style="min-height: 100vh;">
+  @defer (on viewport) {
     <router-outlet></router-outlet>
-  </div>
- 
- <!-- <div ()></div> -->
- 
+
 }
 @placeholder {
 <div  style="display: flex;justify-content: center;align-items: center;height: 100vh;">
@@ -18,8 +12,10 @@
 </div>
 
 }
+</div>
 
-@if(temp) {
+
+
   <app-foot ></app-foot>
- }
+ 
  
