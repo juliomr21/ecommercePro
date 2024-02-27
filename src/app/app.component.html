@@ -1,19 +1,25 @@
 <app-nav-bar></app-nav-bar>
 
 @defer (on viewport) {
-<router-outlet></router-outlet>
+ 
+
+  <div (mousemove)="temp = true" (scroll)="temp = true" (drop)="temp = true" (transitionstart)="temp = false">
+    <router-outlet></router-outlet>
+  </div>
+ 
+ <!-- <div ()></div> -->
+ 
 }
 @placeholder {
-<div style="display: flex;justify-content: center;align-items: center;height: 100vh;">
+<div  style="display: flex;justify-content: center;align-items: center;height: 100vh;">
   <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
   <span class="sr-only">Loading...</span>
 
 </div>
 
 }
-@defer (on viewport) {
-<app-foot></app-foot>
-}
-@placeholder {
-<span></span>
-}
+
+@if(temp) {
+  <app-foot ></app-foot>
+ }
+ 

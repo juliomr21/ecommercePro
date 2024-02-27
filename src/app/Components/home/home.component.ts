@@ -19,6 +19,9 @@ export class HomeComponent {
   list_products_show:any = [];
   list_categories:any = [];
   list_trending:any = [];
+  popular = false;
+  category = false;
+  trend = false;
   constructor(
     private http:HttpConectionService,
     private router:Router,
@@ -33,10 +36,27 @@ export class HomeComponent {
     this.http.get(url).subscribe( {
       next: resp =>{
         this.list_original = resp;
-        this.list_products_show = this.list_original.products.filter((item: { id: number; }) => (item.id) % 3 == 0)
+        this.list_products_show = this.list_original.products.filter((item: { id: number; }) => {
+         if(item.id/3 > 5)
+         this.popular = true;
+          if((item.id) % 3 == 0)
+          return true;
+        return false;
+          })
   
-        this.list_categories = this.list_original.products.filter((item: { id: number; }) => (item.id) % 5 == 0)
-        this.list_trending = this.list_original.products.filter((item: { id: number; }) => (item.id) % 9 == 0)
+        this.list_categories = this.list_original.products.filter((item: { id: number; }) =>
+        { if(item.id/5 > 5) this.category = true
+          if((item.id) % 5 == 0)
+          return true;
+          return false
+        } )
+        this.list_trending = this.list_original.products.filter((item: { id: number; }) => {
+          if(item.id/9 > 5)
+          this.trend = true;
+        if((item.id) % 9 == 0)
+        return true;
+      return false;
+          })
       }
     })  ;
    
