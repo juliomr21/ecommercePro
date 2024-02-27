@@ -5,18 +5,20 @@ import { Router } from '@angular/router';
 import { DataService, carTypeObj } from '../../service/data.service';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { time } from 'console';
+import { TitleCasePipe, UpperCasePipe } from '@angular/common';
 @Component({
     selector: 'app-home',
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [BannerCarouselComponent],
+    imports: [BannerCarouselComponent,UpperCasePipe],
     
 })
 export class HomeComponent {
   list_original:any = [];
   list_products_show:any = [];
   list_categories:any = [];
+  list_trending:any = [];
   constructor(
     private http:HttpConectionService,
     private router:Router,
@@ -25,47 +27,36 @@ export class HomeComponent {
 
   }
   ngOnInit():void{
-    // let url = 'assets/data.json';
-        let url = 'https://dummyjson.com/products/';
-    // this.http.get(url).subscribe(resp => console.log(resp));
    
-    // let urlCat = 'https://dummyjson.com/products/categories'
+        let url = 'https://dummyjson.com/products?limit=100';
+
     this.http.get(url).subscribe( {
       next: resp =>{
         this.list_original = resp;
-        // this.list_products_show = this.list_original.products.filter((item: { rating: number; }) => item.rating > 4.85);
-        this.list_products_show = this.list_original.products;
-        
+        this.list_products_show = this.list_original.products.filter((item: { id: number; }) => (item.id) % 3 == 0)
+  
+        this.list_categories = this.list_original.products.filter((item: { id: number; }) => (item.id) % 5 == 0)
+        this.list_trending = this.list_original.products.filter((item: { id: number; }) => (item.id) % 9 == 0)
       }
-     
-    })  
-    // this.http_serv.get(urlCat).subscribe( {
-    //   next: resp =>{
-    //     this.list_categories = resp;
-               
-    //   }
-     
-    // })  
+    })  ;
+   
+    
       
   }
-  scroll(amount: number) {
-    let container = document.querySelector('.foto-list-container')!;
+  scroll(amount: number,selector:string) {
+    let container = document.querySelector(selector)!;
     container.scrollLeft += amount;
   }
   detail_product(id:any){
     let url = `product-detail/${id}`;
     this.router.navigate([url]);
   }
-  show_category(category:any){
-    // let url = `store/products/category/${category}`
-    // this.router.navigate([url])
+  go_to_category(cat: string) {
+    const urlTemp = '/products/' + cat;
+    this.router.navigateByUrl(urlTemp);
   }
   add_cart(){
-    // let obj:carTypeObj = {cant:2,product:'xxxx',value:5,image:''};
-    // obj.cant = 2;
-    // obj.product = 'xxxx';
-    // obj.value = 5;
-    // this.http_serv.set_cart(obj);
+    
   }
   add(title:string,price:number,image:string,id:number){
     let obj:carTypeObj = {cant:1,product:title,value:price,image:image,id:id};

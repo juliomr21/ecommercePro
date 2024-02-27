@@ -24,7 +24,7 @@
 .title {
     color: #2f3b69;
     margin-top: 25px;
-    margin-bottom: 25px;
+   
 }
 
 .flex {
@@ -38,6 +38,21 @@
 }
 
 .foto-list-container {
+    width: 100%;
+    /* O el ancho que desees */
+    overflow-x: auto;
+    white-space: nowrap;
+    /* Para que las imágenes estén en la misma línea */
+}
+.foto-list-container1 {
+    width: 100%;
+    /* O el ancho que desees */
+    overflow-x: auto;
+    white-space: nowrap;
+    /* P
+    ara que las imágenes estén en la misma línea */
+}
+.foto-list-container2 {
     width: 100%;
     /* O el ancho que desees */
     overflow-x: auto;
@@ -67,14 +82,27 @@
 }
 
 .card-product {
+    background: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     width: 250px;
     height: 350px;
     margin-right: 25px;
 }
+.card-product-category {
+    background: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 250px;
+    height: 280px;
+    margin-right: 25px;
+    cursor: pointer;
+}
 
 .img-card {
     height: 150px;
+    width: 100%;
+}
+.img-card-category {
+    height: 200px;
     width: 100%;
 }
 

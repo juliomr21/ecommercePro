@@ -4,6 +4,7 @@ import { NavBarComponent } from "./Components/nav-bar/nav-bar.component";
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { ToastrService, provideToastr } from 'ngx-toastr';
+import { FootComponent } from './shared/foot/foot.component';
 
 
 
@@ -14,7 +15,7 @@ import { ToastrService, provideToastr } from 'ngx-toastr';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, NavBarComponent]
+    imports: [RouterOutlet, NavBarComponent,FootComponent]
 })
 
 export class AppComponent {

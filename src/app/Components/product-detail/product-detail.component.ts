@@ -33,17 +33,14 @@ export class ProductDetailComponent {
  ngOnInit(){
     
       window.scrollTo({ top: 0});
-      // window.scrollTo({top:0,behavior: 'smooth'}); 
-    // this.data.get_badge().subscribe(resp => console.log(resp));
-    this.act_router.params.subscribe(param => {
+       this.act_router.params.subscribe(param => {
       let producto_aux: any = param;
-      console.log('producto aux',producto_aux.id);
+     
       let urlProducto = `https://dummyjson.com/products/${producto_aux.id}`;
       this.http_serv.get(urlProducto).subscribe(resp => {
         let aux: any = resp;
         this.producto = aux;
         this.img_principal = this.producto.thumbnail;
-        // this.list_img_aux.push(this.img_principal);
         this.list_img_aux = this.producto.images;
         this.http_serv.get(`https://dummyjson.com/products/category/${this.producto.category}?limit=10`).subscribe(
         list_similar => {

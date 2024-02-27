@@ -41,42 +41,7 @@
 
                 </div>
             </div>
-
-
-            <h2 style="margin-top: 25px;">Data for delivery</h2>
-            <div class="flex" style="gap: 10px;">
-                <div style="display: flex;gap: 10px;">
-                    <div>
-                        <input type="search" id="name" class="form-control" mask="00000-000" (keyup.enter)="search_cep()" formControlName="cep">
-                        <label for="name">CEP (Brasil)*</label>
-                    </div>
-                    <div style="width: 150px;">
-                        <button class="btn" style="color: aliceblue;background: #2f3b69;" (click)="search_cep()">Search <i
-                                class="fa fa-search" aria-hidden="true"></i> </button>
-                    </div>
-                </div>
-
-                <div class="top15" style="display: flex;gap: 10px;">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    <div>
-                        <div>{{cep.logradouro}}</div>
-                        <div>CEP {{cep.cep}}-{{cep.bairro}}. {{cep.localidade}}-{{cep.uf}}</div>
-                    </div>
-
-                </div>
-
-            </div>
-            <div style="display: flex;gap: 10px;margin-top: 15px;margin-bottom: 15px;">
-                <div>
-                    <input type="text" name="numero" class="form-control" formControlName="number">
-                    <label for="numero">Number*</label>
-                </div>
-                <div>
-                    <input type="text" name="complemento" class="form-control" formControlName="complemento">
-                    <label for="complemento">Complement</label>
-                </div>
-
-            </div>
+          
             <div style="margin-top: 15px;">
                 <input type="password" id="password" class="form-control" formControlName="senha">
                 <div>

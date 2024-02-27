@@ -2,13 +2,19 @@
   <div>
     <app-banner-carousel class="banner"></app-banner-carousel>
   </div>
-  <h1 class="title text-center">Popular products</h1>
-  <div>
-    <div class="flex">
-      <button class="button-nav d-none d-md-block" (click)="scroll(-100)">
+  <div style="background: rgb(218, 213, 213);padding: 10px;"></div>
+  <div style="background: white;">
+    
+    <div >
+      <h1 class="title container">Popular products</h1>
+    </div>
+   
+    <div class="flex" style="background: white;">
+      <button class="button-nav d-none d-md-block" (click)="scroll(-270,'.foto-list-container')">
         <i class="fa fa-chevron-left fa-3x color-nav" aria-hidden="true"></i>
       </button>
-      <div class=" foto-list-container container">
+      <div class=" foto-list-container container" >
+        
         @for(product of list_products_show;track product.id){
         <div class=" foto-list ">
           <div class=" card-product">
@@ -37,7 +43,75 @@
         </div>
         }
       </div>
-      <button class="button-nav d-none d-md-block" (click)="scroll(100)">
+      <button class="button-nav d-none d-md-block" (click)="scroll(270,'.foto-list-container')">
+        <i class="fa fa-chevron-right fa-3x color-nav" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div >
+  <div style="background: rgb(218, 213, 213);padding: 10px;"></div>
+  <div style="background: white;">
+    <h1 class="title container">Category</h1>
+    <div class="flex" style="background: white;">
+      <button class="button-nav d-none d-md-block" (click)="scroll(-270,'.foto-list-container1')">
+        <i class="fa fa-chevron-left fa-3x color-nav" aria-hidden="true"></i>
+      </button>
+      <div class=" foto-list-container1 container">
+       
+        @for(product of list_categories;track product.id){
+        <div class=" foto-list ">
+          <div class=" card-product-category" (click)="go_to_category(product.category)">
+            <div>
+              <img class="img-card-category" src={{product.thumbnail}} alt="" >
+            </div>
+           
+            <p class="text-center text-secondary">{{product.category|uppercase}}</p>
+                       
+          </div>
+        </div>
+        }
+      </div>
+      <button class="button-nav d-none d-md-block" (click)="scroll(270,'.foto-list-container1')">
+        <i class="fa fa-chevron-right fa-3x color-nav" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div style="background: rgb(218, 213, 213);padding: 10px;"></div>
+  <div style="background: rgb(255, 255, 255)">
+    <h1 class="title container">Trending</h1>
+    <div class="flex">
+      <button class="button-nav d-none d-md-block" (click)="scroll(-270,'.foto-list-container2')">
+        <i class="fa fa-chevron-left fa-3x color-nav" aria-hidden="true"></i>
+      </button>
+      <div class=" foto-list-container2 container">
+        @for(product of list_trending;track product.id){
+        <div class=" foto-list ">
+          <div class=" card-product">
+            <div>
+              <img class="img-card" src={{product.thumbnail}} alt="" (click)="detail_product(product.id)">
+            </div>
+            <div class="text-center title-card container">
+              <p>{{product.title}}</p>
+            </div>
+            <p class="text-center text-secondary">{{product.category}}</p>
+            <div>
+              <p class="text-center">
+                ${{product.price}}</p>
+            </div>
+            <div class="container flex">
+              <div>
+                <button class="btn add-cart" (click)="add(product.title,product.price,product.thumbnail,product.id)">
+                  Add to cart
+                </button>
+              </div>
+              <div>
+                <button class="btn btn-outline-primary" (click)="detail_product(product.id)">See more...</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      <button class="button-nav d-none d-md-block" (click)="scroll(270,'.foto-list-container2')">
         <i class="fa fa-chevron-right fa-3x color-nav" aria-hidden="true"></i>
       </button>
     </div>

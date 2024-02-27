@@ -52,11 +52,9 @@ export class NavBarComponent {
   menu_close() {
     this.showCart = false;
     this.menuMovil = false
-    //  this.router.navigateByUrl('/products/all');
   }
   go_to_category(cat: string) {
     const urlTemp = '/products/' + cat;
-    console.log(urlTemp)
     this.router.navigateByUrl(urlTemp);
     this.showCart = false;
     this.menuMovil = false

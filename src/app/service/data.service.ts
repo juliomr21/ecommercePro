@@ -45,8 +45,7 @@ export class DataService {
     this.badge = this.cartContent.length;
     this.badge$.next(this.badge);
     this.total += (cant * objCart.value);
-    console.log(this.total)
-    this.total$.next(this.total);
+     this.total$.next(this.total);
   }
   get_cartContent(){
     return this.cartContent;
@@ -68,14 +67,12 @@ export class DataService {
     this.badge = this.cartContent.length;
     this.badge$.next(this.badge);
     this.total += (cant * objCart.value);
-    console.log(this.total)
     this.total$.next(this.total);
  }
   delete_product(id:number){
     this.cartContent = this.cartContent.filter(item => item.id != id);
     this.badge--;
     this.badge$.next(this.badge);
-    // this.cartContent$.next(this.cartContent);
   }
   get_total(){
     let sum = 0;

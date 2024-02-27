@@ -44,38 +44,59 @@
                             <img class="full-img" src="assets/oficial.png" alt="">
                         </div>
                     </div>
-                    <div class="col-6">
+                   
+                    <div class="col-5">
                         <div style="display: flex;">
                             <input class="form-control inp" type="search" name="" id="" [(ngModel)]="search" (keyup.enter)="go_to_search()">
                             <i class="fa fa-search fa-2x  lupa" aria-hidden="true" (click)="go_to_search()"></i>
                         </div>
                        
                     </div>
-                   <div class="col-1">
+                 
+                        <div class="col-1">
 
-                   </div>
-                    <div class="col-2 ">
+                        </div>
+                    
+                   
+                    <div class="col ">
                         <div class="row w-center">
-                            <div class="col" style="cursor: pointer;" [routerLink]="['/login']">
+                          
+                            <div class="col" style="cursor: pointer;" >
                                 <div>
-                                    <i class="fa-solid fa-user fa-2xl"></i>
+                                    <i class="fa-solid fa-user fa-2x"></i>
                                     <h6 class="mt-2">{{currentUser}}</h6>
                                 </div>
                             </div>
                             <div class="col">
                                 <div (click)="showCart = !showCart" style="cursor: pointer;">
-                                    <i class="fa-solid fa-cart-shopping fa-2xl"></i>
+                                    <i class="fa-solid fa-cart-shopping fa-2x"></i>
                                     <span class="position-absolute   translate-middle badge rounded-pill bg-danger">
                                         {{badge}}
                                     </span>
                                     <h6 class="mt-2">My cart</h6>
                                 </div>
-                            </div>
-                           
+                            </div>    
+                            @if(currentUser != 'User'){
+                                <div class="col" style="cursor: pointer;" (click)="logout()">
+                                    <div>
+                                        <i class="fa-solid fa-sign-out fa-2x" aria-hidden="true"></i>
+                                        <h6 class="mt-2">Sing-out</h6>
+                                    </div>
+                                </div>
+                            } @else {
+                                <div class="col" style="cursor: pointer;" [routerLink]="['/login']">
+                                    <div>
+                                        <i class="fa-solid fa-sign-in fa-2x" aria-hidden="true"></i>
+                                        <h6 class="mt-2">Sing-in</h6>
+                                    </div>
+                                </div>
+                            }                     
                             
                         </div>
+                       
                         
                     </div>
+                  
                     
                 </div>
         
@@ -280,10 +301,11 @@
                   <hr>
                  
                   @if(currentUser == 'User'){
-                    <div style="display: flex;gap: 10px;align-items: center;cursor: pointer;" [routerLink]="['/register']" (click)="menuMovil = false">
-                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                        <a >Create account</a>
+                    <div style="display: flex;gap: 10px;align-items: center;cursor: pointer;" [routerLink]="['/login']" (click)="menuMovil = false">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        <a >Sign-in</a>
                       </div>
+                     
                   }@else {
                     <div style="display: flex;gap: 10px;align-items: center;cursor: pointer;"  (click)="logout()">
                        <i class="fa fa-sign-out" aria-hidden="true"></i>
