@@ -5,11 +5,12 @@ import { findIndex } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterModule, FormsModule],
+  imports: [RouterModule, FormsModule,NgxMaskDirective],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
