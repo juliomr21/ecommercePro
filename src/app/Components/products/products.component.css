@@ -45,4 +45,28 @@
 .add-cart {
     background: #2f3b69;
     color: aliceblue;
+    width: 100%;
+    margin-top: 25px;
+}
+.filter{
+    max-height: 100%;height: 100%;background: #ebedf2;width: 100%;border-radius: 6px;padding: 1rem;
+}
+.filter_category{
+  
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 10px;
+  border: solid 1px #c9c9cc;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.form-check{
+    border: solid 1px #c9c9cc;
+    padding: 0.7rem;
+    border-radius: 6px;
+}
+.check-input{
+    margin-right: 6px;
 }
