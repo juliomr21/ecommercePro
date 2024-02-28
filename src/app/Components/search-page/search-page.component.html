@@ -1,10 +1,11 @@
 <div style="padding: 1rem;">
     @if(!notfound){
         <div class="container">
+            <h3>Result for: <a style="color: #f68712;">"{{word}}"</a>  </h3>
             <div class="row">
     
                 @for(product of show_list_products; track product.id){
-                <div class="col-md-3 col mt-3  ml-3 card-product" (click)="go_to_product_detail(product.id)">
+                <div class="col-md-3 mt-3  ml-3 card-product" (click)="go_to_product_detail(product.id)">
                     <div class="container-img">
                         <div><img src={{product.thumbnail}} alt="" class="img-card"></div>
                        

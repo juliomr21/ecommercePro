@@ -15,6 +15,7 @@ export class SearchPageComponent {
   show_list_products: any[] = [];
   notfound = true;
   carga = false;
+  word = '';
   constructor(private http: HttpConectionService, private queryRoute: ActivatedRoute, private router: Router) {
 
   }
@@ -25,6 +26,7 @@ export class SearchPageComponent {
       this.carga = false;
       this.notfound = true;
       let temp: any = params;
+      this.word = temp.q;
       this.http.get(this.url + temp.q).subscribe(resp => {
         this.carga = true;
         let list_aux: any = resp;

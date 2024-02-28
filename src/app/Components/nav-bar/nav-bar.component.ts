@@ -89,7 +89,9 @@ export class NavBarComponent {
     }
   }
   go_to_search(){
+    
     this.router.navigate(['/search'],{queryParams:{q:this.search}});
+    this.search='';
   }
   logout(){
     this.data.set_user('User');

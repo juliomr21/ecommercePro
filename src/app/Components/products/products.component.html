@@ -6,12 +6,13 @@
             <div class="col-md-3 mt-3  ml-3 card-product" (click)="go_to_product_detail(product.id)">
                 <div class="container-img">
                     <div><img src={{product.thumbnail}} alt="" class="img-card"></div>
-                   
+                 
                 </div>
                 <div  style="display: flex;color: #2f3b69;margin-top: 10px;;">
                     <h6 style="width: 80%;"><b>{{product.title}}</b></h6>
                     <h6 class="text-secondary" style="margin-left: auto;"><b>${{product.price}}</b></h6>
                 </div>
+               
                 <!-- <button class="btn add-cart">Add to Cart</button> -->
             </div>
             }

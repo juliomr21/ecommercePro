@@ -1,5 +1,5 @@
 .card-product {
-    height: auto;
+    height: 300px;
     margin-right: auto;
     border-radius: 4px;
     width: 23%;
@@ -20,18 +20,25 @@
     max-width: 100%;
     max-height: 165px;
 }
-.container-img{
-    width: fit-content;height: 100%; margin-left: auto;margin-right: auto;
 
-}
 
 @media(max-width: 450px) {
     .card-product {
         width: 85%;
         margin: auto;
+        height: 100%;
     }
     .img-card{
         max-height: 100%;
+    }
+    /* .container-img{
+        max-height: auto;
+    } */
+}
+@media(min-width:451px){
+    .container-img{
+        width: fit-content;height: 100%; margin-left: auto;margin-right: auto;max-height: 165px;
+    
     }
 }
 
