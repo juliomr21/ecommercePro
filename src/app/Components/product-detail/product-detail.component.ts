@@ -35,7 +35,7 @@ export class ProductDetailComponent {
       window.scrollTo({ top: 0});
        this.act_router.params.subscribe(param => {
       let producto_aux: any = param;
-     
+      this.img_principal =  "";
       let urlProducto = `https://dummyjson.com/products/${producto_aux.id}`;
       this.http_serv.get(urlProducto).subscribe(resp => {
         let aux: any = resp;
