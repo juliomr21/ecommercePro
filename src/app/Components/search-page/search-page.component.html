@@ -1,4 +1,5 @@
 <div style="padding: 1rem;">
+  @defer (when carga) {
     @if(!notfound){
         <div class="container">
             <h3>Result for: <a style="color: #f68712;">"{{word}}"</a>  </h3>
@@ -25,5 +26,12 @@
        
         
     }
-   
+  }
+  @placeholder {
+    <div  style="display: flex;justify-content: center;align-items: center;height: 100vh;">
+      <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+      <span class="sr-only">Loading...</span>
+    </div>
+    
+    }
 </div>
