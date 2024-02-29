@@ -52,13 +52,14 @@ export class NavBarComponent {
   }
   menu_close() {
     this.showCart = false;
-    this.menuMovil = false
+    this.menuMovil = false;
+    this.select_category(this.category_temp)
   }
   go_to_category(cat: string) {
     const urlTemp = '/products/' + cat;
+    this.menu_close();
     this.router.navigateByUrl(urlTemp);
-    this.showCart = false;
-    this.menuMovil = false
+   
   }
   select_category(category: string) {
     if (category == this.category_temp) {

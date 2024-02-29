@@ -193,7 +193,7 @@
         </div>
         @if(menuMovil){
         <div class="container menu-movil" >
-            <h2 style="text-align: right;padding: 1rem;" (click)="menu_close()">x</h2>
+            <h2 style="text-align: right;padding: 1rem; cursor: pointer;" (click)="menu_close()">x</h2>
          
             <div class="container" style="padding: 5px;">
                 <a class=" nav-link" (click)="go_to_category('all')">Products</a>
@@ -317,7 +317,7 @@
         </div>
         
         <div class="vh-100" style="background: rgb(3, 0, 8);width: 100%;z-index: 100;position: fixed;opacity: 90%;top: 0;"
-            (click)="menuMovil = false;">
+            (click)="menu_close()">
         
         
         </div>
