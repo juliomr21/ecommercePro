@@ -37,21 +37,25 @@ export class NavBarComponent {
     this.show_badge();
     this.data.get_Shownav$().subscribe(resp => this.showNav = resp);
     this.data.get_user$().subscribe(resp => this.currentUser = resp);
+    this.data.get_closeMenu$().subscribe(resp => this.showCart = resp);
   }
   show_badge() {
     this.data.get_badge().subscribe(resp => this.badge = resp);
   }
   go_to_product() {
     this.router.navigateByUrl('/products/all');
-    this.showCart = false;
+    // this.showCart = false;
+    this.data.set_closeMenu(false);
   }
   go_to_payment() {
     if (this.badge != 0)
       this.router.navigateByUrl('/checkout');
-    this.showCart = false;
+    // this.showCart = false;
+    this.data.set_closeMenu(false);
   }
   menu_close() {
-    this.showCart = false;
+    // this.showCart = false;
+    this.data.set_closeMenu(false);
     this.menuMovil = false;
     this.select_category(this.category_temp)
   }
@@ -101,6 +105,9 @@ export class NavBarComponent {
   print(){
     // console.log('cargo imagen')
     this.cargImg =true
+  }
+  set_cart(modo:boolean){
+    this.data.set_closeMenu(modo);
   }
 }
 

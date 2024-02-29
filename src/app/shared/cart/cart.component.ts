@@ -32,8 +32,10 @@ export class CartComponent {
     this.total = this.data.get_total();
     this.toastr.success( '('+cant+') '+ title + ' removed','',{timeOut:2000});
    }
-   go_to_product(){
-    this.router.navigateByUrl('/products/1');
+   go_to_product(id:number){
+    let url = `/product-detail/${id}`
+    this.data.set_closeMenu(false)
+    this.router.navigateByUrl(url);
    }
 
 }

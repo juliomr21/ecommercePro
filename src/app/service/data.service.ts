@@ -17,6 +17,8 @@ export class DataService {
   private showNav$: Subject<boolean>;
   private user:string = 'user';
   private user$:Subject<string>;
+  private closeMenu: boolean;
+  private closeMenu$: Subject<boolean> 
 
   constructor() {
     this.badge$.next(this.badge)
@@ -25,6 +27,9 @@ export class DataService {
     this.showNav = true;
     this.showNav$ = new Subject()
     this.showNav$.next(this.showNav);
+    this.closeMenu = true;
+    this.closeMenu$ = new Subject()
+    this.closeMenu$.next(this.showNav);
     this.user$ = new Subject();
     this.user$.next(this.user);
   }
@@ -90,6 +95,13 @@ export class DataService {
   }
   get_Shownav$(){
     return this.showNav$.asObservable();
+  }
+  set_closeMenu(modo:boolean){
+    this.closeMenu = modo;
+    this.closeMenu$.next(this.closeMenu);
+  }
+  get_closeMenu$(){
+    return this.closeMenu$.asObservable();
   }
   get_user$(){
     return this.user$.asObservable();

@@ -1,8 +1,9 @@
 <div style="padding: 1rem;">
+    <h3>Result for: <a style="color: #f68712;">"{{word}}"</a>  </h3>
   @defer (when carga) {
     @if(!notfound){
         <div class="container">
-            <h3>Result for: <a style="color: #f68712;">"{{word}}"</a>  </h3>
+           
             <div class="row">
     
                 @for(product of show_list_products; track product.id){
