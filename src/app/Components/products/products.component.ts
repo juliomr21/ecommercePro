@@ -158,7 +158,6 @@ export class ProductsComponent {
       this.brandMark.push(obj);
     
     }
-    console.log(this.brandMark)
   }
   filter_show(){
    this.filterVar = false;

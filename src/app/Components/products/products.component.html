@@ -1,123 +1,15 @@
 <div style="padding: 1rem;">
+   
+        <div class="container">
+            <div class="row mt-3">
+               
+                    <div class="d-none d-md-block col-md-3">
     
-    <div class="container">
-        <div class="row mt-3">
-           
-                <div class="d-none d-md-block col-md-3">
-
-                    <div class="filter">
-                        <h4><b>Sort By</b></h4>
-    
-                        <div class="form-check">
-                            <input class="check-input" id="credit" name="paymentMethod" type="radio" checked="" required="" >
-                            <label class="form-check-label" for="credit">Featured</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="check-input" id="debit" name="paymentMethod" type="radio" required="" (change)="sort_high_to_low()">
-                            <label class="form-check-label" for="debit">Price: Low to High</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="check-input" id="paypal" name="paymentMethod" type="radio" required="" (change)="sort_low_to_high()">
-                            <label class="form-check-label" for="paypal">Price: High to Low</label>
-                        </div>
-    
-                        <h4 class="mt-3"><b>Price</b></h4>
-                        <div style="display: flex;gap: 5px;">
-                            <div>
-                                <input class="form-control" type="number" placeholder="$ Min" min="0" [(ngModel)]="price_min">
-                            </div>
-                            <div>
-                                <input class="form-control" type="number" placeholder="$ Max" max="10000" [(ngModel)]="price_max">
-                            </div>
-                        </div>
-    
-                        <h4 class="mt-3"><b>Category</b>
-                            <div class="filter_category">
-                                <div [style]="categoryHeight">
-                                    <div class="row">
-    
-                                        @for(item of category_list; track item ){
-                                        <div >
-                                            <div style="display: flex;">
-                                                <input class="check-input" type="checkbox" name="" id="" (change)="add_categ(item)" [checked]="category == item">
-                                                <h6>{{item}}</h6>
-                                            </div>
-        
-                                        </div>
-        
-                                        }
-        
-        
-                                    </div>
-                                </div>
-                               
-                                @if(show_category){
-                                    <div style="display: flex;gap: 10px;justify-content: center;align-items: center; cursor: pointer;margin-top: 10px;" (click)="more_category()">
-                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                        <h6><b>See more</b></h6>
-                                    </div>
-                                }@else {
-                                    <div style="display: flex;gap: 10px;justify-content: center;align-items: center;cursor: pointer;margin-top: 10px;" (click)="less_category()">
-                                        <i class="fa fa-angle-up" aria-hidden="true"></i>
-                                        <h6><b>See less</b></h6>
-                                    </div>
-                                }
-                               
-                            </div>
-    
-                        </h4>
-                        @if(brand_list.length != 0){
-                            <h4 class="mt-3"><b>Brand</b>  </h4>
-                            <div class="filter_category" >
-                                <div [style]="brandHeight">
-                                    <div class="row">
-        
-                                        @for(item of brand_list; track item ){
-                                        <div >
-                                            <div style="display: flex;">
-                                                <input class="check-input" type="checkbox" name="" id="" (change)="mark_brand(item)">
-                                                <h6>{{item.brand}}</h6>
-                                            </div>
-            
-                                        </div>
-            
-                                        }
-            
-            
-                                    </div>
-                                </div>
-                                
-                                @if(show_brand){
-                                    <div style="display: flex;gap: 10px;justify-content: center;align-items: center; cursor: pointer;margin-top: 10px;" (click)="more_brand()">
-                                        <i class="fa fa-angle-down" aria-hidden="true"></i>
-                                        <h6><b>See more</b></h6>
-                                    </div>
-                                }@else {
-                                    <div style="display: flex;gap: 10px;justify-content: center;align-items: center;cursor: pointer;margin-top: 10px;" (click)="less_brand()">
-                                        <i class="fa fa-angle-up" aria-hidden="true"></i>
-                                        <h6><b>See less</b></h6>
-                                    </div>
-                                }
-                               
-                               
-                            </div>
-                          
-                        }
-                       
-    
-                        <button class="btn add-cart" (click)="filter_show()">Filter</button>
-                    </div>
-                </div>
-           
-            <div class="d-sm-none">
-                @if(filterVar){
-                    <div class=" col-12">
-                        
                         <div class="filter">
                             <h4><b>Sort By</b></h4>
         
                             <div class="form-check">
-                                <input class="check-input" id="credit" name="paymentMethod" type="radio" checked="" required="">
+                                <input class="check-input" id="credit" name="paymentMethod" type="radio" checked="" required="" (change)="sort_feat()" >
                                 <label class="form-check-label" for="credit">Featured</label>
                             </div>
                             <div class="form-check">
@@ -147,7 +39,7 @@
                                             @for(item of category_list; track item ){
                                             <div >
                                                 <div style="display: flex;">
-                                                    <input class="check-input" type="checkbox" name="" id="" (change)="add_categ(item)" [checked]="category == item" >
+                                                    <input class="check-input" type="checkbox" name="" id="" (change)="add_categ(item)" [checked]="category == item">
                                                     <h6>{{item}}</h6>
                                                 </div>
             
@@ -216,37 +108,157 @@
                             <button class="btn add-cart" (click)="filter_show()">Filter</button>
                         </div>
                     </div>
-                }
-            </div>
-            @if(!filterVar){
-                <div class="col">
-                    <div class="d-sm-none">
-                        <button class="btn add-cart" (click)="filterVar = !filterVar">View filter</button>
-                    </div>
+               
+                <div class="d-sm-none">
+                    @if(filterVar){
+                        <div class=" col-12">
+                            
+                            <div class="filter">
+                                <h4><b>Sort By</b></h4>
+            
+                                <div class="form-check">
+                                    <input class="check-input" id="Featured" name="movilMethod" type="radio" checked="" required="" (change)="sort_feat()">
+                                    <label class="form-check-label" for="Featured">Featured</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="check-input" id="Low" name="movilMethod" type="radio" required="" (change)="sort_high_to_low()">
+                                    <label class="form-check-label" for="Low">Price: Low to High</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="check-input" id="High" name="movilMethod" type="radio" required="" (change)="sort_low_to_high()">
+                                    <label class="form-check-label" for="High">Price: High to Low</label>
+                                </div>
+            
+                                <h4 class="mt-3"><b>Price</b></h4>
+                                <div style="display: flex;gap: 5px;">
+                                    <div>
+                                        <input class="form-control" type="number" placeholder="$ Min" min="0" [(ngModel)]="price_min">
+                                    </div>
+                                    <div>
+                                        <input class="form-control" type="number" placeholder="$ Max" max="10000" [(ngModel)]="price_max">
+                                    </div>
+                                </div>
+            
+                                <h4 class="mt-3"><b>Category</b>
+                                    <div class="filter_category">
+                                        <div [style]="categoryHeight">
+                                            <div class="row">
+            
+                                                @for(item of category_list; track item ){
+                                                <div >
+                                                    <div style="display: flex;">
+                                                        <input class="check-input" type="checkbox" name="" id="" (change)="add_categ(item)" [checked]="category == item" >
+                                                        <h6>{{item}}</h6>
+                                                    </div>
+                
+                                                </div>
+                
+                                                }
+                
+                
+                                            </div>
+                                        </div>
+                                       
+                                        @if(show_category){
+                                            <div style="display: flex;gap: 10px;justify-content: center;align-items: center; cursor: pointer;margin-top: 10px;" (click)="more_category()">
+                                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                <h6><b>See more</b></h6>
+                                            </div>
+                                        }@else {
+                                            <div style="display: flex;gap: 10px;justify-content: center;align-items: center;cursor: pointer;margin-top: 10px;" (click)="less_category()">
+                                                <i class="fa fa-angle-up" aria-hidden="true"></i>
+                                                <h6><b>See less</b></h6>
+                                            </div>
+                                        }
+                                       
+                                    </div>
+            
+                                </h4>
+                                @if(brand_list.length != 0){
+                                    <h4 class="mt-3"><b>Brand</b>  </h4>
+                                    <div class="filter_category" >
+                                        <div [style]="brandHeight">
+                                            <div class="row">
+                
+                                                @for(item of brand_list; track item ){
+                                                <div >
+                                                    <div style="display: flex;">
+                                                        <input class="check-input" type="checkbox" name="" id="" (change)="mark_brand(item)">
+                                                        <h6>{{item.brand}}</h6>
+                                                    </div>
                     
-                    <div class="row">
-    
-                        @for(product of show_list_products; track product.id){
-                        <div class="col-md-3 mt-3  ml-3 card-product" (click)="go_to_product_detail(product.id)">
-                            <div class="container-img">
-                                <div><img src={{product.thumbnail}} alt="" class="img-card"></div>
-    
+                                                </div>
+                    
+                                                }
+                    
+                    
+                                            </div>
+                                        </div>
+                                        
+                                        @if(show_brand){
+                                            <div style="display: flex;gap: 10px;justify-content: center;align-items: center; cursor: pointer;margin-top: 10px;" (click)="more_brand()">
+                                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                                                <h6><b>See more</b></h6>
+                                            </div>
+                                        }@else {
+                                            <div style="display: flex;gap: 10px;justify-content: center;align-items: center;cursor: pointer;margin-top: 10px;" (click)="less_brand()">
+                                                <i class="fa fa-angle-up" aria-hidden="true"></i>
+                                                <h6><b>See less</b></h6>
+                                            </div>
+                                        }
+                                       
+                                       
+                                    </div>
+                                  
+                                }
+                               
+            
+                                <button class="btn add-cart" (click)="filter_show()">Filter</button>
                             </div>
-                            <div style="display: flex;color: #2f3b69;margin-top: 10px;;">
-                                <h6 style="width: 80%;"><b>{{product.title}}</b></h6>
-                                <h6 class="text-secondary" style="margin-left: auto;"><b>${{product.price}}</b></h6>
-                            </div>
-    
-                            <!-- <button class="btn add-cart">Add to Cart</button> -->
                         </div>
-                        }
-                    </div>
+                    }
                 </div>
+              
+                @if(!filterVar){
+                    @defer (when !filterVar) {
+                    <div class="col">
+                        <div class="d-sm-none">
+                            <button class="btn add-cart" (click)="filterVar = !filterVar">View filter</button>
+                        </div>
+                        
+                        <div class="row">
+        
+                            @for(product of show_list_products; track product.id){
+                            <div class="col-md-3 mt-3  ml-3 card-product" (click)="go_to_product_detail(product.id)">
+                                <div class="container-img">
+                                    <div><img src={{product.thumbnail}} alt="" class="img-card"></div>
+        
+                                </div>
+                                <div style="display: flex;color: #2f3b69;margin-top: 10px;;">
+                                    <h6 style="width: 80%;"><b>{{product.title}}</b></h6>
+                                    <h6 class="text-secondary" style="margin-left: auto;"><b>${{product.price}}</b></h6>
+                                </div>
+        
+                                <!-- <button class="btn add-cart">Add to Cart</button> -->
+                            </div>
+                            }
+                        </div>
+                    </div>
+                }
+                @placeholder {
+                    <div  style="display: flex;justify-content: center;align-items: center;height: 100vh;">
+                        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                }
             }
-           
+          
+               
+            </div>
+    
+    
+    
         </div>
-
-
-
-    </div>
+    
+   
 </div>
