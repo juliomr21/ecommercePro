@@ -36,6 +36,7 @@ export class ProductsComponent {
   prontaCateg = false;
   dp: number[] = [0];
   contCateg = 0;
+  noFound = false;
   constructor(private http: HttpConectionService,
     private router: Router,
     private activate_route: ActivatedRoute
@@ -59,6 +60,7 @@ export class ProductsComponent {
         this.filterVar = false;
         this.dp[0] = 0;
         this.contCateg = 0;
+        this.noFound = false;
      
         let temp: any = resp;
         this.category = temp.category;
@@ -224,8 +226,11 @@ export class ProductsComponent {
   }
   filter_show1() {
     this.filterVar = false;
+    this.noFound = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (this.checkCategory[0].mark) {
       this.show_list_products = this.full_list.filter(item => item.price >= this.price_min && item.price <= this.price_max);
+     this.my_sort()
       return;
     }
     this.show_list_products = this.full_list.filter(item => {
@@ -235,7 +240,9 @@ export class ProductsComponent {
       }
       return false;
     })
-
+    this.my_sort();
+    if(this.show_list_products.length == 0)
+    this.noFound = true;
   }
   filter_show() {
     this.filterVar = false;
