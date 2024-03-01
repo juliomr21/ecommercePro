@@ -6,6 +6,7 @@ import { DataService } from '../../service/data.service';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { type } from 'os';
 
 @Component({
   selector: 'app-register',
@@ -31,7 +32,12 @@ export class RegisterComponent {
   cepTemp = '';
   month = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
   year = ['2024', '2025', '2026', '2027', '2028', '2029', '2030', '2031', '2032', '2033', '2034'];
-  form: FormGroup
+  form: FormGroup;
+  style_input_error = {"color":"#ca2e2e","border":"#ca2e2e 1px solid"};
+  style_label_error = {"color":"#ca2e2e"}
+  style_success = {"color":"","border":""};
+  arrayStyleInput = [{}];
+  arrayStyleLabel = [{}];
   constructor(private http: HttpConectionService,
     private fb: FormBuilder,
     private data: DataService,
@@ -44,11 +50,18 @@ export class RegisterComponent {
       senha: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       rsenha: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       email: ['', [Validators.required, Validators.email]],
-      cell: ['', [Validators.required]],
+      cell: ['', [Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
     })
   }
   ngOnInit() {
     this.data.set_Shownav(false);
+    for(let i = 0; i < 6; i++)
+    {
+      this.arrayStyleInput[i] = this.style_success;
+      this.arrayStyleLabel[i] = this.style_success;
+    }
+      
+
   }
   ngOnDestroy() {
     this.data.set_Shownav(true);
@@ -85,13 +98,51 @@ export class RegisterComponent {
 
   }
   validar_form() {
-    if (this.form.valid) {
-     
-      return true;
-    }
-    else {
    
-      return false;
+    // let controls = this.form.controls[0];
+    let it = 0;
+    let Merror = true;
+    Object.keys(this.form.controls).forEach(element => {
+    this.validar_campo(it,element);
+    it++;
+    
+   });
+  
+
+   
+   if(this.form.value['senha']!= this.form.value['rsenha'])
+   {
+     this.toastr.error('Passwords do not match','Enter the same password in both fields');
+    return false;
+   }
+   return !this.form.invalid;
+    // console.log(this.fb.control)
+    // if(this.form.invalid){
+    //   let controls = this.form.controls;
+    //   let pos = 0;
+    //   for(let i of controls){
+
+    //   }
+    // }
+    // if(this.form.controls['senha']!= this.form.controls['senha'])
+    // {
+    //   this.toastr.error('Passwords do not match','Enter the same password in both fields');
+    //   return false;
+    // }else{
+    //   return true;
+    // }
+   
+  }
+  validar_campo(campo:number,nombre:string){
+   
+    if(this.form.controls[nombre].invalid){
+      this.arrayStyleInput[campo] = this.style_input_error;
+      this.arrayStyleLabel[campo] = this.style_label_error
+    }else{
+      this.arrayStyleInput[campo] = this.style_success;
+      this.arrayStyleLabel[campo] = this.style_success;
+     
     }
+     
   }
 }
