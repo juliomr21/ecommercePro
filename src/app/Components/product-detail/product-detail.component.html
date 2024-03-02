@@ -2,7 +2,7 @@
 <div class="container marg-principal">
     @defer (when img_principal != "")  {
         <div class="row">
-            <div class="col-1 d-none d-md-block">
+            <div class="col-1 d-none d-lg-block">
              <div class="list-img-v">
                @for(img of list_img_aux; track img){
                  <div><img class="img-aux" src={{img}} alt="" (click)="actualizar_img(img)"></div>
@@ -15,7 +15,7 @@
                  </div>             
                  
              </div>
-             <div class="d-sm-none mb-4" >
+             <div class="d-md-block d-lg-none mb-4" >
                  <div class="flex">
                      @for(img of list_img_aux; track img){
                          <div ><img  class="img-aux" src={{img}} alt=""  (click)="actualizar_img(img)"></div>
