@@ -41,7 +41,7 @@
                                                     <div >
                                                         @if(item.id != 0){
                                                             <div style="display: flex;">
-                                                                <input class="check-input" type="checkbox" name="" id="" (change)="add_categ1(item.id)" [checked]="item.mark">
+                                                                <input class="check-input" type="checkbox" name="" id="" (change)="add_categ(item.id)" [checked]="item.mark">
                                                                 <h6>{{item.category}}</h6>
                                                             </div>
                                                         }@else {
@@ -83,7 +83,7 @@
                                         <div class="row">
             
                                             @for(item of checkBrand; track item ){
-                                                @if(item.brand!='all' && (item.mark  )){
+                                                @if(item.brand!='all' && (item.mark)){
                                                     <div >
                                                         <div style="display: flex;">
                                                             <input class="check-input" type="checkbox" name="" id="" (change)="changeBrand(item)"  >
@@ -118,7 +118,7 @@
                             }
                            
         
-                            <button class="btn add-cart" (click)="filter_show1()">Filter</button>
+                            <button class="btn add-cart" (click)="filter_show()">Filter</button>
                         </div>
                     </div>
                
@@ -163,7 +163,7 @@
                                                         <div >
                                                             @if(item.id != 0){
                                                                 <div style="display: flex;">
-                                                                    <input class="check-input" type="checkbox" name="" id="" (change)="add_categ1(item.id)" [checked]="item.mark">
+                                                                    <input class="check-input" type="checkbox" name="" id="" (change)="add_categ(item.id)" [checked]="item.mark">
                                                                     <h6>{{item.category}}</h6>
                                                                 </div>
                                                             }@else {
@@ -208,7 +208,7 @@
                                                     @if(item.brand!='all' && (item.mark  )){
                                                         <div >
                                                             <div style="display: flex;">
-                                                                <input class="check-input" type="checkbox" name="" id="" (change)="changeBrand(item)"  >
+                                                                <input class="check-input" type="checkbox" name="" id="" (change)="changeBrand(item)" [checked]="item.select"  >
                                                                 <h6>{{item.brand}}</h6>
                                                             </div>
                             
@@ -238,7 +238,7 @@
                                     </div>
                                
                                 }
-                                <button class="btn add-cart" (click)="filter_show1()">Filter</button>
+                                <button class="btn add-cart" (click)="filter_show()">Filter</button>
                             </div>
                         </div>
                     }

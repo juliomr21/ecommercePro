@@ -16,10 +16,8 @@ export class ProductsComponent {
   list_products: any[] = [];
   show_list_products: any[] = [];
   full_list: any[] = [];
-  category_list: string[] = [];
-  brand_list: brandType[] = [];
+  // category_list: string[] = [];
   categoryMark: string[] = [];
-  brandMark: brandType[] = [];
   checkBrand: brType[] = [{ id: 0, category: 'all', brand: 'all', mark: true, select: true, idPai: 0 }];
   checkCategory: categType[] = [{ id: 0, category: 'all', mark: true }]
   orderType = 1;
@@ -50,23 +48,17 @@ export class ProductsComponent {
   init_data() {
     this.activate_route.params.subscribe(resp => {
       {
-
-
-
-        this.category_list = [];
-        this.brand_list = [];
+       
         this.categoryMark = [];
-        this.brandMark = [];
         this.filterVar = false;
         this.dp[0] = 0;
         this.contCateg = 0;
         this.noFound = false;
-     
+
         let temp: any = resp;
         this.category = temp.category;
         if (this.category != 'all') {
           this.url = 'https://dummyjson.com/products' + '/category/' + this.category;
-
           this.contCateg = 1;
         } else {
           this.url = 'https://dummyjson.com/products' + '?limit=0'
@@ -74,7 +66,6 @@ export class ProductsComponent {
         }
 
         this.http.get(this.url).subscribe(resp => {
-
           let templist_products: any = resp;
           this.list_products = templist_products.products;
           this.show_list_products = this.list_products;
@@ -88,11 +79,9 @@ export class ProductsComponent {
         for (let item of this.full_list) {
           if (item.id % 5 == 0) {
             let pos = Math.floor(item.id / 5);
-            this.category_list.push(item.category);
-            this.checkCategory[pos] = { id: pos, category: item.category, mark: item.category == this.category }
+           this.checkCategory[pos] = { id: pos, category: item.category, mark: item.category == this.category }
             if (item.category == this.category) {
               idCategory = pos;
-
             }
             this.dp[pos] = 0;
           }
@@ -100,25 +89,13 @@ export class ProductsComponent {
           this.checkBrand[posBrand] = { id: posBrand, category: item.category, mark: item.category == this.category, brand: item.brand, select: false, idPai: Math.floor(Number(posBrand - 1) / 5) + 1 }
 
         }
-
         if (idCategory != 0) {
-
-          this.add_brand(this.checkCategory[idCategory].category);
-          this.checkCategory[0].mark = false;
-
+               this.checkCategory[0].mark = false;
         }
-
       })
     });
+  }
 
-  }
-  change_ruta() {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.init_data()
-      }
-    });
-  }
   go_to_product_detail(id: number) {
     this.router.navigateByUrl(`/product-detail/${id}`);
   }
@@ -146,16 +123,14 @@ export class ProductsComponent {
     }
     this.show_category = !this.show_category;
   }
-  
-  add_categ1(idCategory: number) {
-   
+  add_categ(idCategory: number) {
     if (this.checkCategory[idCategory].mark) {
-      this.delete_brand1(this.checkCategory[idCategory].category);
+      this.delete_brand(this.checkCategory[idCategory].category);
       this.dp[0] -= this.dp[idCategory];
       this.dp[idCategory] = 0;
       this.contCateg--;
-      if(this.contCateg == 0)
-       this.checkCategory[0].mark = true
+      if (this.contCateg == 0)
+        this.checkCategory[0].mark = true
     }
     else {
       this.add_brand1(this.checkCategory[idCategory].category, idCategory);
@@ -164,16 +139,7 @@ export class ProductsComponent {
       this.contCateg++;
     }
     this.checkCategory[idCategory].mark = !this.checkCategory[idCategory].mark;
-   
-  }
 
-  add_brand(category: string) {
-    for (let item of this.full_list) {
-      if (item.category == category) {
-        if (!this.brand_list.find(it => item.brand == it.brand && it.category == category))
-          this.brand_list.push({ brand: item.brand, category: item.category });
-      }
-    }
   }
   add_brand1(category: string, idCategory: number) {
     this.checkBrand = this.checkBrand.map(item => {
@@ -187,10 +153,6 @@ export class ProductsComponent {
 
   }
   delete_brand(category: string) {
-    this.brand_list = this.brand_list.filter(item => item.category != category);
-    this.brandMark = this.brandMark.filter(item => item.category != category);
-  }
-  delete_brand1(category: string) {
     this.checkBrand = this.checkBrand.map(item => {
       let tempBrand = item;
       if (item.category == category) {
@@ -201,36 +163,26 @@ export class ProductsComponent {
       return tempBrand;
     })
   }
- 
   changeBrand(obj: brType) {
     let idCategory = obj.idPai;
-   
     this.checkBrand[obj.id].select = !this.checkBrand[obj.id].select;
     if (this.checkBrand[obj.id].select) {
       this.dp[idCategory]++;
       this.checkBrand[obj.id].select = true;
       this.dp[0]++;
-      // if(this.checkCategory[0].mark == true){
-      //   this.checkCategory[idCategory].mark = true;
-      //   this.checkCategory[0].mark = false;
-      // }
-     
     } else {
       this.dp[idCategory]--;
       this.checkBrand[obj.id].select = false;
       this.dp[0]--;
     }
-
-   
-
   }
-  filter_show1() {
+  filter_show() {
     this.filterVar = false;
     this.noFound = false;
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (this.checkCategory[0].mark) {
       this.show_list_products = this.full_list.filter(item => item.price >= this.price_min && item.price <= this.price_max);
-     this.my_sort()
+      this.my_sort()
       return;
     }
     this.show_list_products = this.full_list.filter(item => {
@@ -241,26 +193,10 @@ export class ProductsComponent {
       return false;
     })
     this.my_sort();
-    if(this.show_list_products.length == 0)
-    this.noFound = true;
+    if (this.show_list_products.length == 0)
+      this.noFound = true;
   }
-  filter_show() {
-    this.filterVar = false;
-    if (this.categoryMark.length == 0 && this.brandMark.length == 0) {
-      this.show_list_products = this.full_list.filter(item => item.price >= this.price_min && item.price <= this.price_max);
-      this.my_sort();
-      return;
-    }
-
-    if (this.brandMark.length == 0 && this.categoryMark.length != 0) {
-      this.show_list_products = this.full_list.filter(item => this.categoryMark.find(it => it == item.category) && (item.price >= this.price_min && item.price <= this.price_max))
-      this.my_sort();
-      return;
-    }
-    this.show_list_products = this.full_list.filter(item =>
-      this.brandMark.find(it => item.brand == it.brand && item.category == it.category) && item.price >= this.price_min && item.price <= this.price_max);
-    this.my_sort();
-  }
+ 
   my_sort() {
     if (this.orderType == 1)
       this.sort_feat();
@@ -286,10 +222,10 @@ export class ProductsComponent {
     this.orderType = 1;
   }
 }
-export interface brandType {
-  brand: '',
-  category: ''
-}
+// export interface brandType {
+//   brand: '',
+//   category: ''
+// }
 export interface categType {
   category: string,
   id: number,
