@@ -48,15 +48,19 @@ export class PaymentComponent {
         numero: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
         cell: ['', [Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
+        complement: [''],
+        card: ['',[Validators.required, Validators.maxLength(16), Validators.minLength(16)]],
+        cvv: ['',[Validators.required, Validators.minLength(3), Validators.maxLength(4)]],
+        nameCard: ['',[Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       }
     )
   }
   ngOnInit(){
     
     
-  }
+  } 
   search_cep(){
-    console.log(this.form.controls['cep'].invalid)
+    // console.log(this.form.controls['cep'].invalid)
     if(this.form.controls['cep'].invalid)
     {
       this.toastr.error('Invalid CEP format')
@@ -86,11 +90,16 @@ export class PaymentComponent {
     }     
   }
   pagar(){
-    // this.toastr.info('Thank you for using FakeStore. An email will be sent informing details of your purchase','',{positionClass:'Top Full Width'})
-    
-    this.toastr.info('Thank you for using FakeStore. An email will be sent informing details of your purchase','',{positionClass:'toast-top-full-width'})
-    let go = false;
+   if(this.form.invalid)
+   {
+    this.toastr.error('Complete all fields to continue with payment','')
+   }else
+   {
+    this.toastr.info(' Thank you for using FakeStore. An email will be sent informing details of your purchase', this.form.value['name'],{positionClass:'toast-top-full-width'})
     setTimeout(() =>{this.router.navigateByUrl('');},5000)
+   }
+    
+    
    
   }
 }

@@ -57,8 +57,11 @@
                     <div class="flex" style="gap: 10px;">
                         <div style="display: flex;gap: 10px;">
                             <div>
-                                <input type="search" id="name" class="form-control" mask="00000-000" (keyup.enter)="search_cep()" formControlName="cep">
-                                <label for="name">CEP (Brasil)*</label>
+                                <input type="search" [style]="arrayStyleInput[4]" id="name" class="form-control" mask="00000-000" (keyup.enter)="search_cep()" formControlName="cep" (blur)="validar_campo(4,'cep')">
+                                <label [style]="arrayStyleLabel[4]" for="name">CEP (Brasil)*</label>
+                                @if(arrayStyleLabel[4] == style_label_error){
+                                    <label [style]="arrayStyleLabel[4]" for="name" style="font-size: 13px;"> (Invalid CEP format. CEP contains 8 digits.)</label>
+                                }
                             </div>
                             <div style="width: 150px;">
                                 <button class="btn" style="color: aliceblue;background: #2f3b69;" (click)="search_cep()">Search <i
@@ -78,8 +81,11 @@
                     </div>
                     <div style="display: flex;gap: 10px;margin-top: 15px;margin-bottom: 15px;">
                         <div>
-                            <input type="text" name="numero" class="form-control" formControlName="numero">
-                            <label for="numero">Number*</label>
+                            <input type="text" [style]="arrayStyleInput[5]" name="numero" class="form-control" formControlName="numero" (blur)="validar_campo(5,'numero')" mask="0*">
+                            <label for="numero" [style]="arrayStyleLabel[5]">Number*</label>
+                            @if(arrayStyleLabel[5] == style_label_error){
+                                <label [style]="arrayStyleLabel[5]" for="name" style="font-size: 13px;"> (Invalid Number format.)</label>
+                            }
                         </div>
                         <div>
                             <input type="text" name="complemento" class="form-control">
@@ -88,10 +94,13 @@
 
                     </div>
 
-                </form>
+               
                     <h2>Payment method</h2>
-                    <input class="form-control" type="text" name="cardNum" mask="0000 0000 0000 0000">
-                    <label for="cardNum"> Card Number</label>
+                    <input class="form-control" [style]="arrayStyleInput[6]" type="text" name="cardNum" mask="0000 0000 0000 0000" formControlName="card" (blur)="validar_campo(6,'card')">
+                    <label [style]="arrayStyleLabel[6]" for="cardNum"> Card Number</label>
+                    @if(arrayStyleLabel[6] == style_label_error){
+                        <label [style]="arrayStyleLabel[6]" for="name" style="font-size: 13px;"> (Invalid card number format. Card number contains 16 digits.)</label>
+                    }
 
                     <div style="display: flex;gap: 10px;margin-top: 15px;">
                         <div>
@@ -112,20 +121,27 @@
                             <label for="mes"> Year</label>
                         </div>
                         <div>
-                            <input class="form-control" type="text" name="mes" style="width: 100px;">
-                            <label for="mes"> cvv or cvc</label>
+                            <input class="form-control" [style]="arrayStyleInput[7]" type="text" name="cvv" style="width: 100px;" formControlName="cvv" mask="0*" (blur)="validar_campo(7,'cvv')">
+                            <label [style]="arrayStyleLabel[7]" for="cvv"> cvv or cvc</label>
+                            @if(arrayStyleLabel[7] == style_label_error){
+                                <label [style]="arrayStyleLabel[7]" for="cvv" style="font-size: 13px;"> (Invalid cvv or cvc format. ) </label>
+                            }
                         </div>
                     </div>
                     <div style="margin-top: 15px;">
                         <div>
-                            <input class="form-control" type="text" name="mes" placeholder="MM">
-                            <label for="mes"> Your name on the card:</label>
+                            <input class="form-control" [style]="arrayStyleInput[8]" type="text" name="nameCard" placeholder="" formControlName="nameCard" (blur)="validar_campo(8,'nameCard')">
+                            <label [style]="arrayStyleLabel[8]" for="nameCard"> Your name on the card:</label>
+                            @if(arrayStyleLabel[8] == style_label_error){
+                                <label [style]="arrayStyleLabel[8]" for="nameCard" style="font-size: 13px;"> (Invalid name format.)</label>
+                            }
                         </div>
 
                     </div>
                     <div class="d-none d-md-block mt-3">
-                        <button class="btn dark-blue" (click)="pagar()">Continue payment</button>
+                        <button class="btn dark-blue" (click)="pagar()" [disabled]="form.invalid">Continue payment</button>
                     </div>
+                </form>
                     <!-- <h2>Additional comments</h2> -->
 
                 </div>
@@ -138,7 +154,7 @@
                 <app-cart class="mt-2"></app-cart>
             </div>
             <div class="d-sm-none ">
-                <button class="btn dark-blue" (click)="pagar()" >Continue payment</button>
+                <button class="btn dark-blue" (click)="pagar()" [disabled]="form.invalid" >Continue payment</button>
             </div>
 
            
