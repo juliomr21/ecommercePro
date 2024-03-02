@@ -65,6 +65,7 @@
     display: inline-block;
     margin-top: 25px;
     margin-bottom: 25px;
+    margin-right: 25px;
 }
 
 .button-nav {
@@ -82,30 +83,45 @@
     margin-right: 20px;
     color: #f68712;
 }
-
+.info-card{
+    color: #2f3b69;
+              margin-top: 10px;
+              width: 100%;
+  /* background: chartreuse; */
+  padding: 10px;
+  white-space: nowrap;
+  overflow-x: hidden;
+}
+.letter-info{
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis
+}
 .card-product {
     background: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 250px;
-    height: 350px;
-    margin-right: 25px;
+    width: 165px;
+    height: 205px;
+    /* margin-right: 25px; */
 }
 .card-product-category {
     background: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 250px;
-    height: 280px;
-    margin-right: 25px;
+    width: 210px;
+    height: 230px;
+    /* margin-right: 25px; */
     cursor: pointer;
 }
 
 .img-card {
-    height: 150px;
+    height: 125px;
     width: 100%;
+    cursor: pointer;
 }
 .img-card-category {
     height: 200px;
     width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px -1px 8px;
 }
 
 .title-card {
