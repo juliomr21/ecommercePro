@@ -25,7 +25,7 @@
 @media(max-width: 450px) {
     .card-product {
         width: 50%;
-        margin: auto;
+        /* margin: auto; */
         height: 100%;
     }
     .img-card{
