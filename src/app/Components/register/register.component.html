@@ -16,7 +16,7 @@
                 <div>
                     <label [style]="arrayStyleLabel[0]" for="name">Name*</label>
                     @if(arrayStyleLabel[0] == style_label_error){
-                        <label [style]="arrayStyleLabel[0]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid name format. Name contains only letters</label>
+                        <label [style]="arrayStyleLabel[0]" for="name" style="font-size: 13px;">(Invalid name format. Name contains only letters)</label>
                     }
                 </div>
 
@@ -26,7 +26,7 @@
                 <div>
                     <label [style]="arrayStyleLabel[1]" for="name">E-mail*</label>
                     @if(arrayStyleLabel[1] == style_label_error){
-                        <label [style]="arrayStyleLabel[1]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid email format.</label>
+                        <label [style]="arrayStyleLabel[1]" for="name" style="font-size: 13px;"> (Invalid email format.)</label>
                     }
                 </div>
 
@@ -37,7 +37,7 @@
                     <div>
                         <label [style]="arrayStyleLabel[2]" for="name">Cell phone*</label>
                         @if(arrayStyleLabel[2] == style_label_error){
-                            <label [style]="arrayStyleLabel[2]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid cell phone format. Cell phone contains 11 digits</label>
+                            <label [style]="arrayStyleLabel[2]" for="name" style="font-size: 13px;"> (Invalid cell phone format. Cell phone contains 11 digits.)</label>
                         }
                     </div>
 
@@ -47,7 +47,7 @@
                     <div>
                         <label [style]="arrayStyleLabel[3]" for="name" >CPF (Brasil)*</label>
                         @if(arrayStyleLabel[3] == style_label_error){
-                            <label [style]="arrayStyleLabel[3]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid CPF format. CPF contains 11 digits</label>
+                            <label [style]="arrayStyleLabel[3]" for="name" style="font-size: 13px;"> (Invalid CPF format. CPF contains 11 digits.)</label>
                         }
                     </div>
 
@@ -59,7 +59,7 @@
                 <div>
                     <label [style]="arrayStyleLabel[4]" for="password">Password*</label>
                     @if(arrayStyleLabel[4] == style_label_error){
-                        <label [style]="arrayStyleLabel[4]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid password format. Password contains at least 5 characters</label>
+                        <label [style]="arrayStyleLabel[4]" for="name" style="font-size: 13px;"> (Invalid password format. Password contains at least 5 characters.)</label>
                     }
                 </div>
 
@@ -69,7 +69,7 @@
                 <div>
                     <label [style]="arrayStyleLabel[5]" for="confirm">Confirm password*</label>
                     @if(arrayStyleLabel[5] == style_label_error){
-                        <label [style]="arrayStyleLabel[5]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid password format. Password contains at least 5 characters</label>
+                        <label [style]="arrayStyleLabel[5]" for="name" style="font-size: 13px;">(Invalid password format. Password contains at least 5 characters)</label>
                     }
                 </div>
 
@@ -82,43 +82,7 @@
                 <div style="margin-right: 6px;"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
                 
                 <h6>Fakestore is an example online store. The data will only be in your browser.</h6>
-            </div>
-           
-
-            <!-- <h2>Payment method</h2>
-            <input class="form-control" type="text" name="cardNum" mask="0000 0000 0000 0000">
-            <label for="cardNum"> Card Number</label>
-
-            <div style="display: flex;gap: 10px;margin-top: 15px;">
-                <div>
-                    <select name="month" id="" class="form-control">
-                      @for(currentMonth of month;track month ){
-                        <option>{{currentMonth}}</option>
-                      }
-                    </select>
-                  
-                    <label for="month"> Month</label>
-                </div>
-                <div>
-                    <select name="year" id="" class="form-control">
-                        @for(currentMonth of year;track year ){
-                          <option>{{currentMonth}}</option>
-                        }
-                      </select>
-                    <label for="mes"> Year</label>
-                </div>
-                <div>
-                    <input class="form-control" type="text" name="mes" style="width: 100px;">
-                    <label for="mes"> cvv or cvc</label>
-                </div>
-            </div>
-            <div style="margin-top: 15px;">
-                <div>
-                    <input class="form-control" type="text" name="mes" placeholder="MM">
-                    <label for="mes"> Your name on the card:</label>
-                </div>
-
-            </div>   -->
+            </div>  
         </form>
     </div>
 </div>

@@ -21,7 +21,7 @@
     color: aliceblue;
 }
 .preview-cart{
-    padding: 2rem;color: #2f3b69;margin-left: auto;height: 100vh;
+    padding: 2rem;color: #2f3b69;margin-left: auto;
 }
 @media(max-width:450px){
     .info-cart{

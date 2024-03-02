@@ -102,25 +102,20 @@ export class RegisterComponent {
   }
   validar_form() {
    
-    // let controls = this.form.controls[0];
     let it = 0;
-    let Merror = true;
     Object.keys(this.form.controls).forEach(element => {
     this.validar_campo(it,element);
-    it++;
-    
+    it++;    
    });
-  
 
-   
    if(this.form.value['senha']!= this.form.value['rsenha'])
    {
      this.toastr.error('Passwords do not match','Enter the same password in both fields');
     return false;
    }
-   return !this.form.invalid;
-  
+   return !this.form.invalid;  
   }
+
   validar_campo(campo:number,nombre:string){
    
     if(this.form.controls[nombre].invalid){
@@ -130,7 +125,6 @@ export class RegisterComponent {
       this.arrayStyleInput[campo] = this.style_Input_success;
       this.arrayStyleLabel[campo] = this.style_Label_success;
      
-    }
-     
+    }     
   }
 }
