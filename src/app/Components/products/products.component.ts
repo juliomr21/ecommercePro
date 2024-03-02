@@ -16,8 +16,6 @@ export class ProductsComponent {
   list_products: any[] = [];
   show_list_products: any[] = [];
   full_list: any[] = [];
-  // category_list: string[] = [];
-  categoryMark: string[] = [];
   checkBrand: brType[] = [{ id: 0, category: 'all', brand: 'all', mark: true, select: true, idPai: 0 }];
   checkCategory: categType[] = [{ id: 0, category: 'all', mark: true }]
   orderType = 1;
@@ -49,7 +47,6 @@ export class ProductsComponent {
     this.activate_route.params.subscribe(resp => {
       {
        
-        this.categoryMark = [];
         this.filterVar = false;
         this.dp[0] = 0;
         this.contCateg = 0;
@@ -133,7 +130,7 @@ export class ProductsComponent {
         this.checkCategory[0].mark = true
     }
     else {
-      this.add_brand1(this.checkCategory[idCategory].category, idCategory);
+      this.add_brand(this.checkCategory[idCategory].category, idCategory);
       this.checkCategory[0].mark = false;
       this.checkBrand[0].mark = false;
       this.contCateg++;
@@ -141,7 +138,7 @@ export class ProductsComponent {
     this.checkCategory[idCategory].mark = !this.checkCategory[idCategory].mark;
 
   }
-  add_brand1(category: string, idCategory: number) {
+  add_brand(category: string, idCategory: number) {
     this.checkBrand = this.checkBrand.map(item => {
       let itemAux = item;
       if (item.category == category) {
@@ -222,10 +219,7 @@ export class ProductsComponent {
     this.orderType = 1;
   }
 }
-// export interface brandType {
-//   brand: '',
-//   category: ''
-// }
+
 export interface categType {
   category: string,
   id: number,
