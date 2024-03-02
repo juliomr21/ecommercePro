@@ -15,6 +15,9 @@
                 <input type="text" id="name" [style]="arrayStyleInput[0]" class="form-control" formControlName="name" (blur)="validar_campo(0,'name')">
                 <div>
                     <label [style]="arrayStyleLabel[0]" for="name">Name*</label>
+                    @if(arrayStyleLabel[0] == style_label_error){
+                        <label [style]="arrayStyleLabel[0]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid name format. Name contains only letters</label>
+                    }
                 </div>
 
             </div>
@@ -22,14 +25,20 @@
                 <input type="text" id="name" class="form-control btn-wrong" [style]="arrayStyleInput[1]" formControlName="email" (blur)="validar_campo(1,'email')">
                 <div>
                     <label [style]="arrayStyleLabel[1]" for="name">E-mail*</label>
+                    @if(arrayStyleLabel[1] == style_label_error){
+                        <label [style]="arrayStyleLabel[1]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid email format.</label>
+                    }
                 </div>
 
             </div>
-            <div class="flex">
+            <div class="">
                 <div class="mt-3">
                     <input type="text" [style]="arrayStyleInput[2]" id="name" class="form-control" mask="(00)00000-0000" formControlName="cell" (blur)="validar_campo(2,'cell')">
                     <div>
                         <label [style]="arrayStyleLabel[2]" for="name">Cell phone*</label>
+                        @if(arrayStyleLabel[2] == style_label_error){
+                            <label [style]="arrayStyleLabel[2]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid cell phone format. Cell phone contains 11 digits</label>
+                        }
                     </div>
 
                 </div>
@@ -37,6 +46,9 @@
                     <input type="text" [style]="arrayStyleInput[3]" id="name" class="form-control" mask="000.000.000-00" formControlName="cpf" (blur)="validar_campo(3,'cpf')">
                     <div>
                         <label [style]="arrayStyleLabel[3]" for="name" >CPF (Brasil)*</label>
+                        @if(arrayStyleLabel[3] == style_label_error){
+                            <label [style]="arrayStyleLabel[3]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid CPF format. CPF contains 11 digits</label>
+                        }
                     </div>
 
                 </div>
@@ -46,6 +58,9 @@
                 <input type="password" id="password" [style]="arrayStyleInput[4]" class="form-control" formControlName="senha" (blur)="validar_campo(4,'senha')">
                 <div>
                     <label [style]="arrayStyleLabel[4]" for="password">Password*</label>
+                    @if(arrayStyleLabel[4] == style_label_error){
+                        <label [style]="arrayStyleLabel[4]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid password format. Password contains at least 5 characters</label>
+                    }
                 </div>
 
             </div>
@@ -53,6 +68,9 @@
                 <input type="password" id="confirm" [style]="arrayStyleInput[5]" class="form-control" formControlName="rsenha" (blur)="validar_campo(5,'rsenha')">
                 <div>
                     <label [style]="arrayStyleLabel[5]" for="confirm">Confirm password*</label>
+                    @if(arrayStyleLabel[5] == style_label_error){
+                        <label [style]="arrayStyleLabel[5]" for="name" style="font-size: 13px;margin-left: 6px;"> Invalid password format. Password contains at least 5 characters</label>
+                    }
                 </div>
 
             </div>

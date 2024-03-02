@@ -35,7 +35,9 @@ export class RegisterComponent {
   form: FormGroup;
   style_input_error = {"color":"#ca2e2e","border":"#ca2e2e 1px solid"};
   style_label_error = {"color":"#ca2e2e"}
-  style_success = {"color":"","border":""};
+  style_Input_success = {"color":"#268426","border":"#268426 1px solid"};
+  style_Label_success = {"color":"#268426","border":"#268426 "};
+  style_neutro = {"color":"","border":""};
   arrayStyleInput = [{}];
   arrayStyleLabel = [{}];
   constructor(private http: HttpConectionService,
@@ -45,7 +47,7 @@ export class RegisterComponent {
     private router: Router,
     private toastr: ToastrService) {
     this.form = fb.group({
-      name: ['', [Validators.required]],
+      name: ['', [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
       cpf: ['', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
       senha: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
       rsenha: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(255)]],
@@ -57,8 +59,8 @@ export class RegisterComponent {
     this.data.set_Shownav(false);
     for(let i = 0; i < 6; i++)
     {
-      this.arrayStyleInput[i] = this.style_success;
-      this.arrayStyleLabel[i] = this.style_success;
+      this.arrayStyleInput[i] = this.style_neutro;
+      this.arrayStyleLabel[i] = this.style_neutro;
     }
       
 
@@ -77,6 +79,7 @@ export class RegisterComponent {
   }
   register() {
     if (this.validar_form()) {
+     
       this.auth.register(this.form.value).subscribe(resp => {
         let status = resp.status;
         if (status == 201) {
@@ -116,22 +119,7 @@ export class RegisterComponent {
     return false;
    }
    return !this.form.invalid;
-    // console.log(this.fb.control)
-    // if(this.form.invalid){
-    //   let controls = this.form.controls;
-    //   let pos = 0;
-    //   for(let i of controls){
-
-    //   }
-    // }
-    // if(this.form.controls['senha']!= this.form.controls['senha'])
-    // {
-    //   this.toastr.error('Passwords do not match','Enter the same password in both fields');
-    //   return false;
-    // }else{
-    //   return true;
-    // }
-   
+  
   }
   validar_campo(campo:number,nombre:string){
    
@@ -139,8 +127,8 @@ export class RegisterComponent {
       this.arrayStyleInput[campo] = this.style_input_error;
       this.arrayStyleLabel[campo] = this.style_label_error
     }else{
-      this.arrayStyleInput[campo] = this.style_success;
-      this.arrayStyleLabel[campo] = this.style_success;
+      this.arrayStyleInput[campo] = this.style_Input_success;
+      this.arrayStyleLabel[campo] = this.style_Label_success;
      
     }
      
