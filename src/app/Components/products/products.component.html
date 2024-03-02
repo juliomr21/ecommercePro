@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row mt-3">
                
-                    <div class="d-none d-md-block col-md-3">
+                    <div class="d-none d-lg-block col-md-3">
     
                         <div class="filter">
                             <h4><b>Sort By</b></h4>
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                
-                <div class="d-sm-none">
+                <div class="d-md-block">
                     @if(filterVar){
                         <div class=" col-12">
                             
@@ -248,7 +248,7 @@
                    
                     @defer (when !filterVar) {
                     <div class="col">
-                        <div class="d-sm-none">
+                        <div class="d-md-block">
                             <button class="btn add-cart" (click)="filterVar = !filterVar">View filter</button>
                         </div>
                         
