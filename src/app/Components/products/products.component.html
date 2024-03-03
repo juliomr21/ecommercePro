@@ -122,7 +122,7 @@
                         </div>
                     </div>
                
-                <div class="d-md-block">
+                <div class="d-sm-none">
                     @if(filterVar){
                         <div class=" col-12">
                             
@@ -248,7 +248,7 @@
                    
                     @defer (when !filterVar) {
                     <div class="col">
-                        <div class="d-md-block">
+                        <div class=" d-md-block d-lg-none">
                             <button class="btn add-cart" (click)="filterVar = !filterVar">View filter</button>
                         </div>
                         

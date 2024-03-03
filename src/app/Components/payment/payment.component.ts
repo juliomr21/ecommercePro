@@ -6,7 +6,8 @@ import { NgxMaskDirective } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
 import { time } from 'console';
 import { delay } from 'rxjs';
-import { Router } from '@angular/router';
+import { Data, Router } from '@angular/router';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-payment',
@@ -16,7 +17,8 @@ import { Router } from '@angular/router';
   styleUrl: './payment.component.css'
 })
 export class PaymentComponent {
-  cep = {
+ 
+  cepError = {
     "cep": "",
     "logradouro": "",
     "complemento": "",
@@ -27,7 +29,8 @@ export class PaymentComponent {
     "gia": "",
     "ddd": "98",
     "siafi": "0921"
-  };
+  }
+  cep:any = this.cepError;
   cepTemp = '';
   month = ['01','02','03','04','05','06','07','08','09','10','11','12'];
   year = ['2024','2025','2026','2027','2028','2029','2030','2031','2032','2033','2034'];
@@ -39,7 +42,7 @@ export class PaymentComponent {
   arrayStyleInput = [{}];
   arrayStyleLabel = [{}];
   form:FormGroup;
-  constructor(private http: HttpConectionService,private fb: FormBuilder, private toastr: ToastrService,private router: Router){
+  constructor(private http: HttpConectionService,private fb: FormBuilder, private toastr: ToastrService,private router: Router,private data:DataService){
     this.form = fb.group(
       {
         name: ['', [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
@@ -64,19 +67,27 @@ export class PaymentComponent {
     if(this.form.controls['cep'].invalid)
     {
       this.toastr.error('Invalid CEP format')
+      this.cep = this.cepError;
+      this.arrayStyleInput[4] = this.style_input_error;
+      this.arrayStyleLabel[4] = this.style_label_error
       return;
+    }else{
+      let url = 'https://viacep.com.br/ws/'+this.form.value['cep'] + '/json/'
+      this.http.get(url).subscribe(resp =>{
+      let temp:any = resp;
+      if(temp.erro)
+      {
+        this.toastr.error('Invalid CEP');
+        this.cep =  this.cepError;
+        this.arrayStyleInput[4] = this.style_input_error;
+        this.arrayStyleLabel[4] = this.style_label_error
+      }
+      else
+      this.cep = temp;
+      }
+      );
     }
-    let url = 'https://viacep.com.br/ws/'+this.form.value['cep'] + '/json/'
-    this.http.get(url).subscribe(resp =>{
-    let temp:any = resp;
-    if(temp.erro)
-    {
-      this.toastr.error('Invalid CEP')
-    }
-    // console.log(temp)
-    this.cep = temp;
-    }
-    );
+    
   }
   validar_campo(campo:number,nombre:string){
    
@@ -95,6 +106,7 @@ export class PaymentComponent {
     this.toastr.error('Complete all fields to continue with payment','')
    }else
    {
+    this.data.clear_cart();
     this.toastr.info(' Thank you for using FakeStore. An email will be sent informing details of your purchase', this.form.value['name'],{positionClass:'toast-top-full-width'})
     setTimeout(() =>{this.router.navigateByUrl('');},5000)
    }

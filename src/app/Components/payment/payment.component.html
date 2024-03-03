@@ -57,25 +57,26 @@
                     <div class="flex" style="gap: 10px;">
                         <div style="display: flex;gap: 10px;">
                             <div>
-                                <input type="search" [style]="arrayStyleInput[4]" id="name" class="form-control" mask="00000-000" (keyup.enter)="search_cep()" formControlName="cep" (blur)="validar_campo(4,'cep')">
+                                <input type="search" [style]="arrayStyleInput[4]" id="name" class="form-control" mask="00000-000" (keyup.enter)="search_cep()" (blur)="search_cep()" formControlName="cep" (blur)="validar_campo(4,'cep')">
                                 <label [style]="arrayStyleLabel[4]" for="name">CEP (Brasil)*</label>
                                 @if(arrayStyleLabel[4] == style_label_error){
                                     <label [style]="arrayStyleLabel[4]" for="name" style="font-size: 13px;"> (Invalid CEP format. CEP contains 8 digits.)</label>
                                 }
                             </div>
-                            <div style="width: 150px;">
+                            <div style="width: 50%;max-width: 150px;">
                                 <button class="btn" style="color: aliceblue;background: #2f3b69;" (click)="search_cep()">Search <i
                                         class="fa fa-search" aria-hidden="true"></i> </button>
                             </div>
                         </div>
 
-                        <div class="top15" style="display: flex;gap: 10px;">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                            <div>
-                                <div>{{cep.logradouro}}</div>
-                                <div>CEP {{cep.cep}}-{{cep.bairro}}. {{cep.localidade}}-{{cep.uf}}</div>
-                            </div>
+                       
 
+                    </div>
+                    <div class="top15 mt-3" style="display: flex;gap: 10px;">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <div>
+                            <div>{{cep.logradouro}}</div>
+                            <div>CEP {{cep.cep}}-{{cep.bairro}}. {{cep.localidade}}-{{cep.uf}}</div>
                         </div>
 
                     </div>

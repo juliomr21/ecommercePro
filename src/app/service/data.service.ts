@@ -110,6 +110,14 @@ export class DataService {
     this.user = currentUser;
     this.user$.next(this.user);
   }
+  clear_cart(){
+    this.cartContent = [];
+    this.cartContent$.next(this.cartContent);
+    this.total = 0;
+    this.total$.next(this.total);
+    this.badge = 0;
+    this.badge$.next(this.badge);
+  }
 }
 
 export interface carTypeObj {
