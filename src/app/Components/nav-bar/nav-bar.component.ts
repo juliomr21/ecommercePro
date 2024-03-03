@@ -3,6 +3,7 @@ import { DataService } from '../../service/data.service';
 import { CartComponent } from '../../shared/cart/cart.component';
 import { Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -26,21 +27,25 @@ export class NavBarComponent {
   category_temp = '';
   search = '';
   showNav = true;
-  currentUser = 'User';
+  currentUser = '';
   cargImg = false;
 
-  constructor(private data: DataService, private router: Router) {
+  constructor(private data: DataService, private router: Router, private cookie:CookieService) {
 
   }
  
   ngOnInit(): void {
     this.show_badge();
     this.data.get_Shownav$().subscribe(resp => this.showNav = resp);
-    this.data.get_user$().subscribe(resp => {this.currentUser = resp;});
+    this.currentUser = this.data.get_user();
+    this.data.get_user$().subscribe(resp => {this.currentUser = resp;
+        });
+    
     this.data.get_closeMenu$().subscribe(resp => this.showCart = resp);
   }
   show_badge() {
-    this.data.get_badge().subscribe(resp => this.badge = resp);
+    this.badge = this.data.get_badge();
+    this.data.get_badge$().subscribe(resp => this.badge = resp);
   }
   go_to_product() {
     this.router.navigateByUrl('/products/all');
@@ -99,7 +104,11 @@ export class NavBarComponent {
     this.search='';
   }
   logout(){
+    // this.data.set_user('User');
     this.data.set_user('User');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user')
+   
     this.menuMovil = false;
   }
   print(){

@@ -55,7 +55,7 @@ export class ProductDetailComponent {
   }
  f(){
   this.data.set_badge(3);
-  this.data.get_badge().subscribe(resp => this.badge = resp);
+  this.data.get_badge$().subscribe(resp => this.badge = resp);
  }
   scroll(amount: number) {
     let container = document.querySelector('.foto-list-container')!;

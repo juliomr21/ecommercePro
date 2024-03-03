@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Observable, Subject, of, findIndex } from 'rxjs';
 import { register } from 'module';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import { register } from 'module';
 export class AuthService {
 
   private respLogin$: Subject<any>;
-  constructor() {
+  constructor(private data:DataService, private cookie:CookieService) {
     this.respLogin$ = new Subject();
   }
   login(cpf: string, password: string): Observable<any> {
@@ -94,4 +95,5 @@ export class AuthService {
   decod_cpf(cpf: string) {
     return cpf.replace(/[.-]/g, '')
   }
+ 
 }

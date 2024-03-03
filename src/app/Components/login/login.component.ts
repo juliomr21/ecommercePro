@@ -37,8 +37,8 @@ export class LoginComponent {
       let respTemp: any = resp;
       if (respTemp.status == 200) {
         this.data.set_user(respTemp.user);
-        this.cookie.set('token',respTemp.token);
-        this.cookie.set('user',respTemp.user);
+        localStorage.setItem('token',respTemp.token);
+        localStorage.setItem('user',respTemp.user);
         this.router.navigateByUrl('');
       } else {
         this.toastr.error('Incorrect CPF or Password')

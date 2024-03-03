@@ -67,30 +67,33 @@
                                     <h6 class="mt-2">{{currentUser}}</h6>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div (click)="set_cart(!showCart)" style="cursor: pointer;">
-                                    <i class="fa-solid fa-cart-shopping fa-2x"></i>
-                                    <span class="position-absolute   translate-middle badge rounded-pill bg-danger">
-                                        {{badge}}
-                                    </span>
-                                    <h6 class="mt-2">My cart</h6>
-                                </div>
-                            </div>    
-                            @if(currentUser != 'User'){
-                                <div class="col" style="cursor: pointer;" (click)="logout()">
-                                    <div>
-                                        <i class="fa-solid fa-sign-out fa-2x" aria-hidden="true"></i>
-                                        <h6 class="mt-2">Sing-out</h6>
+                            @if(currentUser!=''){
+                                <div class="col">
+                                    <div (click)="set_cart(!showCart)" style="cursor: pointer;">
+                                        <i class="fa-solid fa-cart-shopping fa-2x"></i>
+                                        <span class="position-absolute   translate-middle badge rounded-pill bg-danger">
+                                            {{badge}}
+                                        </span>
+                                        <h6 class="mt-2">My cart</h6>
                                     </div>
-                                </div>
-                            } @else {
-                                <div class="col" style="cursor: pointer;" [routerLink]="['/login']">
-                                    <div>
-                                        <i class="fa-solid fa-sign-in fa-2x" aria-hidden="true"></i>
-                                        <h6 class="mt-2">Sing-in</h6>
+                                </div>    
+                                @if(currentUser != 'User'){
+                                    <div class="col" style="cursor: pointer;" (click)="logout()">
+                                        <div>
+                                            <i class="fa-solid fa-sign-out fa-2x" aria-hidden="true"></i>
+                                            <h6 class="mt-2">Sing-out</h6>
+                                        </div>
                                     </div>
-                                </div>
-                            }                     
+                                } @else {
+                                    <div class="col" style="cursor: pointer;" [routerLink]="['/login']">
+                                        <div>
+                                            <i class="fa-solid fa-sign-in fa-2x" aria-hidden="true"></i>
+                                            <h6 class="mt-2">Sing-in</h6>
+                                        </div>
+                                    </div>
+                                }  
+                            }
+                                              
                             
                         </div>
                        

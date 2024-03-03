@@ -1,8 +1,9 @@
 
 import { Injectable } from '@angular/core';
-import { Subject, findIndex } from 'rxjs';
+import { Subject, findIndex, of } from 'rxjs';
 import { CartComponent } from '../shared/cart/cart.component';
 import { CookieService } from 'ngx-cookie-service';
+import { json } from 'stream/consumers';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,13 @@ export class DataService {
   private total$:Subject<number> = new Subject();
   private showNav:boolean;
   private showNav$: Subject<boolean>;
-  private user:string = 'user';
+  private user:string = 'User';
   private user$:Subject<string>;
   private closeMenu: boolean;
   private closeMenu$: Subject<boolean> 
 
   constructor(private cookie: CookieService) {
-    this.badge$.next(this.badge)
+    
     this.cartContent$.next(this.cartContent);
     this.total$.next(this.total);
     this.showNav = true;
@@ -31,12 +32,28 @@ export class DataService {
     this.closeMenu = true;
     this.closeMenu$ = new Subject()
     this.closeMenu$.next(this.showNav);
-    this.user = cookie.get('user');
+    if(typeof localStorage !== 'undefined' && localStorage.getItem('user'))
+    {
+      this.user = localStorage.getItem('user')!;
+      
+    }
+    if(typeof localStorage !== 'undefined' && localStorage.getItem('cart'))
+    {
+      this.cartContent = JSON.parse(localStorage.getItem('cart')!)
+      this.cartContent$.next(this.cartContent);
+      this.badge = this.cartContent.length;
+      this.badge$.next(this.badge)
+    }
+  
+   
     this.user$ = new Subject();
     this.user$.next(this.user);
   }
-  get_badge() {
+  get_badge$() {
     return this.badge$.asObservable();
+  }
+  get_badge(){
+    return this.badge;
   }
   set_badge(cant: number) {
     this.badge = this.badge + cant;
@@ -48,7 +65,7 @@ export class DataService {
       this.cartContent.push(objCart);
     else
       this.cartContent[pos].cant += cant;
-    
+    localStorage.setItem('cart',JSON.stringify(this.cartContent));
     this.badge = this.cartContent.length;
     this.badge$.next(this.badge);
     this.total += (cant * objCart.value);
@@ -75,11 +92,13 @@ export class DataService {
     this.badge$.next(this.badge);
     this.total += (cant * objCart.value);
     this.total$.next(this.total);
+    localStorage.setItem('cart',JSON.stringify(this.cartContent));
  }
   delete_product(id:number){
     this.cartContent = this.cartContent.filter(item => item.id != id);
     this.badge--;
     this.badge$.next(this.badge);
+    localStorage.setItem('cart',JSON.stringify(this.cartContent));
   }
   get_total(){
     let sum = 0;
@@ -106,7 +125,11 @@ export class DataService {
     return this.closeMenu$.asObservable();
   }
   get_user$(){
+    this.user$.next(this.user);
     return this.user$.asObservable();
+  }
+  get_user(){
+    return this.user;
   }
   set_user(currentUser:string){
     this.user = currentUser;

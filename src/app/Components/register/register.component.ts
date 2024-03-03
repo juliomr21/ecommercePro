@@ -89,8 +89,8 @@ export class RegisterComponent {
             let respTemp: any = respl;
               if (respTemp.status == 200) {
               this.data.set_user(respTemp.user);
-              this.cookie.set('user',respTemp.user);
-              this.cookie.set('token',respTemp.token);
+              localStorage.setItem('user',respTemp.user);
+              localStorage.setItem('token',respTemp.token);
               this.router.navigateByUrl('');
             } else {
               this.toastr.error('Error')
