@@ -36,7 +36,7 @@ export class NavBarComponent {
   ngOnInit(): void {
     this.show_badge();
     this.data.get_Shownav$().subscribe(resp => this.showNav = resp);
-    this.data.get_user$().subscribe(resp => this.currentUser = resp);
+    this.data.get_user$().subscribe(resp => {this.currentUser = resp;});
     this.data.get_closeMenu$().subscribe(resp => this.showCart = resp);
   }
   show_badge() {

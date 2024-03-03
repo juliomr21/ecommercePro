@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { NgxMaskDirective } from 'ngx-mask';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent {
   constructor(private data: DataService,
     private toastr: ToastrService,
     private router: Router,
-    private auth: AuthService) {
+    private auth: AuthService,
+    private cookie: CookieService) {
 
   }
   ngOnInit() {
@@ -35,6 +37,8 @@ export class LoginComponent {
       let respTemp: any = resp;
       if (respTemp.status == 200) {
         this.data.set_user(respTemp.user);
+        this.cookie.set('token',respTemp.token);
+        this.cookie.set('user',respTemp.user);
         this.router.navigateByUrl('');
       } else {
         this.toastr.error('Incorrect CPF or Password')

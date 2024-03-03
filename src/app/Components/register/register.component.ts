@@ -7,6 +7,7 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { type } from 'os';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register',
@@ -45,7 +46,8 @@ export class RegisterComponent {
     private data: DataService,
     private auth: AuthService,
     private router: Router,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private cookie: CookieService) {
     this.form = fb.group({
       name: ['', [Validators.required,Validators.pattern('[a-zA-Z ]*')]],
       cpf: ['', [Validators.required, Validators.maxLength(11), Validators.minLength(11)]],
@@ -87,6 +89,8 @@ export class RegisterComponent {
             let respTemp: any = respl;
               if (respTemp.status == 200) {
               this.data.set_user(respTemp.user);
+              this.cookie.set('user',respTemp.user);
+              this.cookie.set('token',respTemp.token);
               this.router.navigateByUrl('');
             } else {
               this.toastr.error('Error')

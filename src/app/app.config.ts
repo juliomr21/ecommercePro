@@ -9,8 +9,10 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { provideToastr } from 'ngx-toastr'
 import { provideEnvironmentNgxMask } from 'ngx-mask';
+import { CookieService } from 'ngx-cookie-service';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideClientHydration(),provideHttpClient(),
-    provideAnimations(), provideToastr(),provideEnvironmentNgxMask()  ,ReactiveFormsModule,FormsModule,HttpClientModule]
+    provideAnimations(), provideToastr(),provideEnvironmentNgxMask(),
+    ReactiveFormsModule,FormsModule,HttpClientModule,CookieService]
 };

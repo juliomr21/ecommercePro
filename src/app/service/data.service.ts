@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, findIndex } from 'rxjs';
 import { CartComponent } from '../shared/cart/cart.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class DataService {
   private closeMenu: boolean;
   private closeMenu$: Subject<boolean> 
 
-  constructor() {
+  constructor(private cookie: CookieService) {
     this.badge$.next(this.badge)
     this.cartContent$.next(this.cartContent);
     this.total$.next(this.total);
@@ -30,6 +31,7 @@ export class DataService {
     this.closeMenu = true;
     this.closeMenu$ = new Subject()
     this.closeMenu$.next(this.showNav);
+    this.user = cookie.get('user');
     this.user$ = new Subject();
     this.user$.next(this.user);
   }
