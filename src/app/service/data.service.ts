@@ -80,6 +80,7 @@ export class DataService {
   }
   change_cant(){
      this.get_total()
+     localStorage.setItem('cart',JSON.stringify(this.cartContent));
   }
   change_cant_p(objCart: carTypeObj, cant: number){
     let pos = this.cartContent.findIndex(item => objCart.id == item.id);
@@ -142,6 +143,7 @@ export class DataService {
     this.total$.next(this.total);
     this.badge = 0;
     this.badge$.next(this.badge);
+    localStorage.removeItem('cart');
   }
 }
 

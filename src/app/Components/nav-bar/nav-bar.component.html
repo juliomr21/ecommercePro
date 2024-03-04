@@ -4,7 +4,7 @@
             (click)="showCart = false;">
         
         </div>
-        <div class="cart-sh" style=" background: aliceblue; z-index: 105; opacity: 1;height: 95%;">
+        <div class="cart-sh" style=" background: aliceblue; z-index: 105; opacity: 1;">
             <div class="card-cart">
                 <h2 class="bar-title-card">
         
@@ -14,7 +14,7 @@
                             (click)="showCart = !showCart">X</button>
                     </div>
                 </h2>
-                <div style="padding: 1rem;height: 100%;">
+                <div class="cart-space">
                     <app-cart></app-cart>
                     <div class="mt-3">
                         @if(badge != 0){

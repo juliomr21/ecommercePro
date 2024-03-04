@@ -91,8 +91,11 @@
 .card-cart{
   background: aliceblue;
   color: #2f3b69;
-  height: 100vh;
-  height: 95%
+  height: auto;
+  /* height: 95% */
+}
+.cart-space{
+  padding: 1rem;height: 466px;
 }
 @media(max-width:450px ){
   .cart-sh{
@@ -106,7 +109,7 @@
     padding: 1rem;
     cursor: pointer;
   }
- 
+  
   .nb-link:hover{
     border-bottom: solid 2px yellow;
   }
@@ -117,9 +120,13 @@
 @media(max-height:450px ){
   .cart-sh{
     width: 100%;
-    height: 100%;
+    height: auto;
+    max-height: 100vh;
      left: 0;
      top: 0;
+  }
+  .cart-space{
+    padding: 1rem;height: 466px;
   }
   .nav-link{
     padding: 1rem;
