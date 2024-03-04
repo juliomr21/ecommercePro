@@ -3,8 +3,8 @@
     <app-banner-carousel class="banner"></app-banner-carousel>
   </div>
 
-  
-  <div style="background: white;box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;">
+  @if(popular){
+<div style="background: white;box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;">
     <div>
       <h2 class="title container">Popular products</h2>
     </div>
@@ -39,10 +39,11 @@
       </button>
     </div>
   </div>
+  }
+  
  
- 
- 
-  <div style="background: white;box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;">
+ @if(category){
+ <div style="background: white;box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;">
     <h2 class="title container">Category</h2>
     <div class="flex" style="background: white;">
       <button class="button-nav d-none d-md-block" (click)="scroll(-270,'.foto-list-container1')">
@@ -68,9 +69,11 @@
       </button>
     </div>
   </div>
-  
+ }
  
-    <div style="background: white;box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;">
+ 
+  @if(trend){
+<div style="background: white;box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;">
       <div>
         <h2 class="title container">Trending</h2>
       </div>
@@ -105,5 +108,8 @@
         </button>
       </div>
     </div>
+  }
+ 
+    
 
 </div>
