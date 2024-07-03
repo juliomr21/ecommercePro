@@ -99,9 +99,10 @@
 }
 .card-product {
     background: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 165px;
-    height: 205px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 3px;
+    width: 145px;
+    height: 210px;
+    border-radius: 20px;
     /* margin-right: 25px; */
 }
 .card-product-category {
@@ -117,6 +118,8 @@
     height: 125px;
     width: 100%;
     cursor: pointer;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
 }
 .img-card-category {
     height: 150px;
